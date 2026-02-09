@@ -1118,22 +1118,10 @@
             font-size: 1.15em;
             font-weight: 500;
             letter-spacing: 0.02em;
-            text-shadow:
-                0 0 10px rgba(209, 124, 115, 0.55),
-                0 10px 26px rgba(209, 124, 115, 0.3);
+            text-shadow: none;
         }
 
-        .overlap-title span::after {
-            content: '';
-            position: absolute;
-            left: -0.08em;
-            right: -0.08em;
-            bottom: 0.1em;
-            height: 0.28em;
-            background: rgba(209, 124, 115, 0.25);
-            filter: blur(10px);
-            z-index: -1;
-        }
+        .overlap-title span::after { content: none; }
 
         .overlap-text {
             color: var(--text-secondary);
