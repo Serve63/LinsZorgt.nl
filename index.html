@@ -1015,65 +1015,6 @@
             color: #f09b94;
         }
 
-        .form-fallback {
-            display: none;
-            width: 100%;
-            position: relative;
-            z-index: 4;
-            pointer-events: auto;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-            padding: 0.8rem 0.9rem;
-            border: 1px solid var(--border-hover);
-            background: rgba(209, 124, 115, 0.08);
-            border-radius: 6px;
-        }
-
-        .form-fallback.is-visible {
-            display: block;
-        }
-
-        .form-fallback * {
-            pointer-events: auto;
-        }
-
-        .form-fallback-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 0.6rem;
-        }
-
-        .form-fallback a,
-        .form-fallback button {
-            appearance: none;
-            border: 1px solid var(--border);
-            background: rgba(0, 0, 0, 0.15);
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 0.8rem;
-            padding: 0.35rem 0.6rem;
-            border-radius: 4px;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .form-fallback-text {
-            width: 100%;
-            min-height: 110px;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            background: rgba(0, 0, 0, 0.18);
-            color: var(--text-secondary);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            padding: 0.55rem 0.65rem;
-            resize: vertical;
-        }
-
         .question-form.submitted .form-success {
             display: block;
         }
@@ -1707,11 +1648,8 @@
                         <h2>Mis je een onderwerp?</h2>
                         <p>Stel je vraag en ik bundel de meest voorkomende thema’s in de FAQ of in een nieuw antwoord op de site.</p>
                     </div>
-                    <form class="question-form" id="vraag-form" action="https://formsubmit.co/ajax/info@linszorgt.nl" method="POST">
-                        <input type="hidden" name="_subject" value="Nieuwe vraag via linszorgt.nl">
-                        <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="text" name="_honey" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+                    <form class="question-form" id="vraag-form" action="/api/contact" method="POST">
+                        <input type="text" name="honey" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
                         <div class="form-row">
                             <div class="form-field">
                                 <label for="vraag-naam">Naam (optioneel)</label>
@@ -1731,15 +1669,6 @@
                             <p class="form-note">Je vraag komt direct in het postvak. Liever mailen? <a href="mailto:info@linszorgt.nl">info@linszorgt.nl</a>.</p>
                             <p class="form-success" aria-live="polite">Dankjewel! Je vraag is verzonden en staat in het postvak.</p>
                             <p class="form-error" aria-live="polite">Verzenden lukt nu niet. Probeer opnieuw of mail naar info@linszorgt.nl.</p>
-                            <div class="form-fallback" aria-live="polite">
-                                <div class="form-fallback-actions">
-                                    <a href="mailto:info@linszorgt.nl" class="form-fallback-link">Open e-mailapp</a>
-                                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@linszorgt.nl" target="_blank" rel="noopener" class="form-fallback-gmail">Open Gmail</a>
-                                    <a href="https://outlook.live.com/mail/0/deeplink/compose?to=info@linszorgt.nl" target="_blank" rel="noopener" class="form-fallback-outlook">Open Outlook</a>
-                                    <button type="button" class="form-fallback-copy">Kopieer tekst</button>
-                                </div>
-                                <textarea class="form-fallback-text" readonly></textarea>
-                            </div>
                         </div>
                     </form>
                 </div>
@@ -1904,137 +1833,19 @@
         window.addEventListener('resize', updateFaqHeights);
         updateFaqHeights();
 
-        // Vraag formulier (verstuurt naar mailbox via FormSubmit)
+        // Vraag formulier (verstuurt naar backend endpoint)
         const questionForm = document.getElementById('vraag-form');
         if (questionForm) {
             const questionSubmitButton = questionForm.querySelector('button[type="submit"]');
             const questionErrorMessage = questionForm.querySelector('.form-error');
-            const questionFallbackPanel = questionForm.querySelector('.form-fallback');
-            const questionFallbackLink = questionForm.querySelector('.form-fallback-link');
-            const questionFallbackGmailLink = questionForm.querySelector('.form-fallback-gmail');
-            const questionFallbackOutlookLink = questionForm.querySelector('.form-fallback-outlook');
-            const questionFallbackCopyButton = questionForm.querySelector('.form-fallback-copy');
-            const questionFallbackText = questionForm.querySelector('.form-fallback-text');
             const defaultSubmitLabel = questionSubmitButton ? questionSubmitButton.textContent.trim() : 'Verstuur vraag';
             const defaultErrorLabel = questionErrorMessage
                 ? questionErrorMessage.textContent.trim()
                 : 'Verzenden lukt nu niet. Probeer opnieuw of mail naar info@linszorgt.nl.';
 
-            const buildMailFallbackPayload = () => {
-                const fallbackData = new FormData(questionForm);
-                const naam = String(fallbackData.get('naam') || '').trim() || '(niet ingevuld)';
-                const email = String(fallbackData.get('email') || '').trim() || '(niet ingevuld)';
-                const vraag = String(fallbackData.get('vraag') || '').trim();
-                const subject = 'Nieuwe vraag via linszorgt.nl';
-                const body = [
-                    'Nieuwe vraag via linszorgt.nl',
-                    '',
-                    `Naam: ${naam}`,
-                    `E-mail: ${email}`,
-                    '',
-                    'Vraag:',
-                    vraag || '(leeg)'
-                ].join('\n');
-                const plainText = [
-                    'Aan: info@linszorgt.nl',
-                    `Onderwerp: ${subject}`,
-                    '',
-                    body
-                ].join('\n');
-
-                return {
-                    subject,
-                    body,
-                    plainText,
-                    mailtoHref: `mailto:info@linszorgt.nl?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
-                    gmailHref: `https://mail.google.com/mail/?view=cm&fs=1&to=info@linszorgt.nl&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
-                    outlookHref: `https://outlook.live.com/mail/0/deeplink/compose?to=info@linszorgt.nl&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-                };
-            };
-
-            const hideFallbackPanel = () => {
-                if (questionFallbackPanel) questionFallbackPanel.classList.remove('is-visible');
-                if (questionFallbackLink) questionFallbackLink.setAttribute('href', 'mailto:info@linszorgt.nl');
-                if (questionFallbackGmailLink) {
-                    questionFallbackGmailLink.setAttribute('href', 'https://mail.google.com/mail/?view=cm&fs=1&to=info@linszorgt.nl');
-                }
-                if (questionFallbackOutlookLink) {
-                    questionFallbackOutlookLink.setAttribute('href', 'https://outlook.live.com/mail/0/deeplink/compose?to=info@linszorgt.nl');
-                }
-                if (questionFallbackCopyButton) questionFallbackCopyButton.textContent = 'Kopieer tekst';
-                if (questionFallbackText) questionFallbackText.value = '';
-            };
-
-            const showFallbackPanel = (payload) => {
-                if (questionFallbackLink) questionFallbackLink.setAttribute('href', payload.mailtoHref);
-                if (questionFallbackGmailLink) questionFallbackGmailLink.setAttribute('href', payload.gmailHref);
-                if (questionFallbackOutlookLink) questionFallbackOutlookLink.setAttribute('href', payload.outlookHref);
-                if (questionFallbackText) questionFallbackText.value = payload.plainText;
-                if (questionFallbackCopyButton) questionFallbackCopyButton.textContent = 'Kopieer tekst';
-                if (questionFallbackPanel) questionFallbackPanel.classList.add('is-visible');
-            };
-
-            const copyFallbackText = async (text) => {
-                if (navigator.clipboard && window.isSecureContext) {
-                    try {
-                        await navigator.clipboard.writeText(text);
-                        return true;
-                    } catch (clipboardError) {
-                        // Probeert hieronder met document.execCommand.
-                    }
-                }
-
-                try {
-                    const tempArea = document.createElement('textarea');
-                    tempArea.value = text;
-                    tempArea.setAttribute('readonly', 'readonly');
-                    tempArea.style.position = 'fixed';
-                    tempArea.style.left = '-9999px';
-                    document.body.appendChild(tempArea);
-                    tempArea.select();
-                    const copied = document.execCommand('copy');
-                    document.body.removeChild(tempArea);
-                    return copied;
-                } catch (copyError) {
-                    return false;
-                }
-            };
-
-            const resolveFormErrorMessage = (message) => {
-                const normalized = String(message || '').toLowerCase();
-
-                if (normalized.includes('web server') || window.location.protocol === 'file:') {
-                    return 'Open deze pagina via de live site of een lokale webserver (niet via file://), anders blokkeert FormSubmit.';
-                }
-
-                if (normalized.includes('activation')) {
-                    return "FormSubmit moet eenmalig geactiveerd worden. Open de mailbox van info@linszorgt.nl en klik op 'Activate Form'.";
-                }
-
-                if (!message) return defaultErrorLabel;
-                return String(message);
-            };
-
-            if (questionFallbackCopyButton) {
-                questionFallbackCopyButton.addEventListener('click', async () => {
-                    const payload = buildMailFallbackPayload();
-                    const didCopy = await copyFallbackText(payload.plainText);
-                    if (didCopy) {
-                        questionFallbackCopyButton.textContent = 'Gekopieerd';
-                    } else {
-                        questionFallbackCopyButton.textContent = 'Kopieren mislukt';
-                        if (questionFallbackText) {
-                            questionFallbackText.focus();
-                            questionFallbackText.select();
-                        }
-                    }
-                });
-            }
-
             questionForm.addEventListener('submit', async (event) => {
                 event.preventDefault();
                 questionForm.classList.remove('submitted', 'submit-error');
-                hideFallbackPanel();
                 if (questionErrorMessage) questionErrorMessage.textContent = defaultErrorLabel;
 
                 if (!questionForm.reportValidity()) return;
@@ -2046,17 +1857,27 @@
 
                 try {
                     if (window.location.protocol === 'file:') {
-                        throw new Error('web server required');
+                        throw new Error('Open de live site in je browser. Het formulier werkt niet via file://.');
                     }
 
                     const formData = new FormData(questionForm);
+                    const payload = {
+                        naam: String(formData.get('naam') || '').trim(),
+                        email: String(formData.get('email') || '').trim(),
+                        vraag: String(formData.get('vraag') || '').trim(),
+                        honey: String(formData.get('honey') || '').trim()
+                    };
+
                     const response = await fetch(questionForm.action, {
                         method: 'POST',
-                        headers: { Accept: 'application/json' },
-                        body: formData
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Accept: 'application/json'
+                        },
+                        body: JSON.stringify(payload)
                     });
                     const responseData = await response.json().catch(() => null);
-                    const responseSuccess = responseData && (responseData.success === true || responseData.success === 'true');
+                    const responseSuccess = responseData && responseData.success === true;
 
                     if (!response.ok || !responseSuccess) {
                         const responseMessage = responseData && responseData.message
@@ -2069,11 +1890,8 @@
                     questionForm.classList.add('submitted');
                 } catch (error) {
                     const errorMessage = String(error && error.message ? error.message : '');
-                    const payload = buildMailFallbackPayload();
-                    showFallbackPanel(payload);
-
                     if (questionErrorMessage) {
-                        questionErrorMessage.textContent = `${resolveFormErrorMessage(errorMessage)} Gebruik hieronder Open Gmail/Outlook of kopieer tekst.`;
+                        questionErrorMessage.textContent = errorMessage || defaultErrorLabel;
                     }
 
                     questionForm.classList.add('submit-error');
