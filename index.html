@@ -1015,6 +1015,38 @@
             color: #f09b94;
         }
 
+        .form-fallback {
+            display: none;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            padding: 0.7rem 0.85rem;
+            border: 1px solid var(--border-hover);
+            background: rgba(209, 124, 115, 0.08);
+            border-radius: 6px;
+        }
+
+        .form-fallback.is-visible {
+            display: block;
+        }
+
+        .form-fallback a {
+            color: var(--accent);
+            text-decoration: none;
+            margin-right: 0.9rem;
+        }
+
+        .form-fallback button {
+            appearance: none;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-primary);
+            font-size: 0.8rem;
+            padding: 0.35rem 0.6rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
         .question-form.submitted .form-success {
             display: block;
         }
@@ -1672,6 +1704,10 @@
                             <p class="form-note">Je vraag komt direct in het postvak. Liever mailen? <a href="mailto:info@linszorgt.nl">info@linszorgt.nl</a>.</p>
                             <p class="form-success" aria-live="polite">Dankjewel! Je vraag is verzonden en staat in het postvak.</p>
                             <p class="form-error" aria-live="polite">Verzenden lukt nu niet. Probeer opnieuw of mail naar info@linszorgt.nl.</p>
+                            <div class="form-fallback" aria-live="polite">
+                                <a href="mailto:info@linszorgt.nl" class="form-fallback-link">Open e-mail</a>
+                                <button type="button" class="form-fallback-copy">Kopieer tekst</button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -1841,16 +1877,20 @@
         if (questionForm) {
             const questionSubmitButton = questionForm.querySelector('button[type="submit"]');
             const questionErrorMessage = questionForm.querySelector('.form-error');
+            const questionFallbackPanel = questionForm.querySelector('.form-fallback');
+            const questionFallbackLink = questionForm.querySelector('.form-fallback-link');
+            const questionFallbackCopyButton = questionForm.querySelector('.form-fallback-copy');
             const defaultSubmitLabel = questionSubmitButton ? questionSubmitButton.textContent.trim() : 'Verstuur vraag';
             const defaultErrorLabel = questionErrorMessage
                 ? questionErrorMessage.textContent.trim()
                 : 'Verzenden lukt nu niet. Probeer opnieuw of mail naar info@linszorgt.nl.';
 
-            const buildMailtoFallbackLink = () => {
+            const buildMailFallbackPayload = () => {
                 const fallbackData = new FormData(questionForm);
                 const naam = String(fallbackData.get('naam') || '').trim() || '(niet ingevuld)';
                 const email = String(fallbackData.get('email') || '').trim() || '(niet ingevuld)';
                 const vraag = String(fallbackData.get('vraag') || '').trim();
+                const subject = 'Nieuwe vraag via linszorgt.nl';
                 const body = [
                     'Nieuwe vraag via linszorgt.nl',
                     '',
@@ -1861,7 +1901,17 @@
                     vraag || '(leeg)'
                 ].join('\n');
 
-                return `mailto:info@linszorgt.nl?subject=${encodeURIComponent('Nieuwe vraag via linszorgt.nl')}&body=${encodeURIComponent(body)}`;
+                return {
+                    subject,
+                    body,
+                    href: `mailto:info@linszorgt.nl?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+                };
+            };
+
+            const hideFallbackPanel = () => {
+                if (questionFallbackPanel) questionFallbackPanel.classList.remove('is-visible');
+                if (questionFallbackLink) questionFallbackLink.setAttribute('href', 'mailto:info@linszorgt.nl');
+                if (questionFallbackCopyButton) questionFallbackCopyButton.textContent = 'Kopieer tekst';
             };
 
             const resolveFormErrorMessage = (message) => {
@@ -1879,9 +1929,29 @@
                 return String(message);
             };
 
+            if (questionFallbackCopyButton) {
+                questionFallbackCopyButton.addEventListener('click', async () => {
+                    const payload = buildMailFallbackPayload();
+                    const copyText = [
+                        'Aan: info@linszorgt.nl',
+                        `Onderwerp: ${payload.subject}`,
+                        '',
+                        payload.body
+                    ].join('\n');
+
+                    try {
+                        await navigator.clipboard.writeText(copyText);
+                        questionFallbackCopyButton.textContent = 'Gekopieerd';
+                    } catch (copyError) {
+                        questionFallbackCopyButton.textContent = 'Kopieren mislukt';
+                    }
+                });
+            }
+
             questionForm.addEventListener('submit', async (event) => {
                 event.preventDefault();
                 questionForm.classList.remove('submitted', 'submit-error');
+                hideFallbackPanel();
                 if (questionErrorMessage) questionErrorMessage.textContent = defaultErrorLabel;
 
                 if (!questionForm.reportValidity()) return;
@@ -1919,9 +1989,12 @@
                     const normalizedError = errorMessage.toLowerCase();
 
                     if (normalizedError.includes('activation') || normalizedError.includes('web server')) {
-                        window.location.href = buildMailtoFallbackLink();
+                        const payload = buildMailFallbackPayload();
+                        if (questionFallbackLink) questionFallbackLink.setAttribute('href', payload.href);
+                        if (questionFallbackPanel) questionFallbackPanel.classList.add('is-visible');
+                        window.location.href = payload.href;
                         if (questionErrorMessage) {
-                            questionErrorMessage.textContent = 'Formulierprovider is nog niet actief. Je mailapp is geopend als fallback.';
+                            questionErrorMessage.textContent = 'Formulierprovider is nog niet actief. Klik op "Open e-mail" als je mailapp niet vanzelf opent.';
                         }
                     } else if (questionErrorMessage) {
                         questionErrorMessage.textContent = resolveFormErrorMessage(errorMessage);
