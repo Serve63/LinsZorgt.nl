@@ -1840,11 +1840,31 @@
         const questionForm = document.getElementById('vraag-form');
         if (questionForm) {
             const questionSubmitButton = questionForm.querySelector('button[type="submit"]');
+            const questionErrorMessage = questionForm.querySelector('.form-error');
             const defaultSubmitLabel = questionSubmitButton ? questionSubmitButton.textContent.trim() : 'Verstuur vraag';
+            const defaultErrorLabel = questionErrorMessage
+                ? questionErrorMessage.textContent.trim()
+                : 'Verzenden lukt nu niet. Probeer opnieuw of mail naar info@linszorgt.nl.';
+
+            const resolveFormErrorMessage = (message) => {
+                const normalized = String(message || '').toLowerCase();
+
+                if (normalized.includes('web server') || window.location.protocol === 'file:') {
+                    return 'Open deze pagina via de live site of een lokale webserver (niet via file://), anders blokkeert FormSubmit.';
+                }
+
+                if (normalized.includes('activation')) {
+                    return "FormSubmit moet eenmalig geactiveerd worden. Open de mailbox van info@linszorgt.nl en klik op 'Activate Form'.";
+                }
+
+                if (!message) return defaultErrorLabel;
+                return String(message);
+            };
 
             questionForm.addEventListener('submit', async (event) => {
                 event.preventDefault();
                 questionForm.classList.remove('submitted', 'submit-error');
+                if (questionErrorMessage) questionErrorMessage.textContent = defaultErrorLabel;
 
                 if (!questionForm.reportValidity()) return;
 
@@ -1854,20 +1874,32 @@
                 }
 
                 try {
+                    if (window.location.protocol === 'file:') {
+                        throw new Error('web server required');
+                    }
+
                     const formData = new FormData(questionForm);
                     const response = await fetch(questionForm.action, {
                         method: 'POST',
                         headers: { Accept: 'application/json' },
                         body: formData
                     });
+                    const responseData = await response.json().catch(() => null);
+                    const responseSuccess = responseData && (responseData.success === true || responseData.success === 'true');
 
-                    if (!response.ok) {
-                        throw new Error('Mail endpoint gaf een foutstatus terug.');
+                    if (!response.ok || !responseSuccess) {
+                        const responseMessage = responseData && responseData.message
+                            ? responseData.message
+                            : 'Mail endpoint gaf een foutstatus terug.';
+                        throw new Error(responseMessage);
                     }
 
                     questionForm.reset();
                     questionForm.classList.add('submitted');
                 } catch (error) {
+                    if (questionErrorMessage) {
+                        questionErrorMessage.textContent = resolveFormErrorMessage(error && error.message);
+                    }
                     questionForm.classList.add('submit-error');
                 } finally {
                     if (questionSubmitButton) {
