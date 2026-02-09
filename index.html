@@ -1846,6 +1846,24 @@
                 ? questionErrorMessage.textContent.trim()
                 : 'Verzenden lukt nu niet. Probeer opnieuw of mail naar info@linszorgt.nl.';
 
+            const buildMailtoFallbackLink = () => {
+                const fallbackData = new FormData(questionForm);
+                const naam = String(fallbackData.get('naam') || '').trim() || '(niet ingevuld)';
+                const email = String(fallbackData.get('email') || '').trim() || '(niet ingevuld)';
+                const vraag = String(fallbackData.get('vraag') || '').trim();
+                const body = [
+                    'Nieuwe vraag via linszorgt.nl',
+                    '',
+                    `Naam: ${naam}`,
+                    `E-mail: ${email}`,
+                    '',
+                    'Vraag:',
+                    vraag || '(leeg)'
+                ].join('\n');
+
+                return `mailto:info@linszorgt.nl?subject=${encodeURIComponent('Nieuwe vraag via linszorgt.nl')}&body=${encodeURIComponent(body)}`;
+            };
+
             const resolveFormErrorMessage = (message) => {
                 const normalized = String(message || '').toLowerCase();
 
@@ -1897,9 +1915,18 @@
                     questionForm.reset();
                     questionForm.classList.add('submitted');
                 } catch (error) {
-                    if (questionErrorMessage) {
-                        questionErrorMessage.textContent = resolveFormErrorMessage(error && error.message);
+                    const errorMessage = String(error && error.message ? error.message : '');
+                    const normalizedError = errorMessage.toLowerCase();
+
+                    if (normalizedError.includes('activation') || normalizedError.includes('web server')) {
+                        window.location.href = buildMailtoFallbackLink();
+                        if (questionErrorMessage) {
+                            questionErrorMessage.textContent = 'Formulierprovider is nog niet actief. Je mailapp is geopend als fallback.';
+                        }
+                    } else if (questionErrorMessage) {
+                        questionErrorMessage.textContent = resolveFormErrorMessage(errorMessage);
                     }
+
                     questionForm.classList.add('submit-error');
                 } finally {
                     if (questionSubmitButton) {
