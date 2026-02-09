@@ -38,29 +38,34 @@ module.exports = async (req, res) => {
       return res.status(400).json({ success: false, message: 'Vul je vraag in.' });
     }
 
-    const host = process.env.SMTP_HOST || 'smtp.ionos.com';
-    const port = Number(process.env.SMTP_PORT || 587);
     const user = process.env.SMTP_USER || '';
     const pass = process.env.SMTP_PASS || '';
+    const useAuthSmtp = Boolean(user && pass);
     const to = process.env.CONTACT_TO || 'info@linszorgt.nl';
-    const from = process.env.CONTACT_FROM || user;
+    const authFrom = process.env.CONTACT_FROM || user;
+    const directFrom = process.env.CONTACT_FROM || 'formulier@mailer.local';
 
-    if (!user || !pass || !from) {
-      return res.status(500).json({
-        success: false,
-        message: 'Mailserver is nog niet geconfigureerd (SMTP_USER/SMTP_PASS).'
-      });
-    }
-
-    const transporter = nodemailer.createTransport({
-      host,
-      port,
-      secure: port === 465,
-      auth: { user, pass },
-      connectionTimeout: 10000,
-      greetingTimeout: 10000,
-      socketTimeout: 15000
-    });
+    const transporter = useAuthSmtp
+      ? nodemailer.createTransport({
+          host: process.env.SMTP_HOST || 'smtp.ionos.com',
+          port: Number(process.env.SMTP_PORT || 587),
+          secure: Number(process.env.SMTP_PORT || 587) === 465,
+          auth: { user, pass },
+          connectionTimeout: 10000,
+          greetingTimeout: 10000,
+          socketTimeout: 15000
+        })
+      : nodemailer.createTransport({
+          // IONOS MX over IPv6 accepteert mail naar info@linszorgt.nl zonder auth.
+          host: process.env.DIRECT_SMTP_HOST || '2a01:238:20a:202:50f0::2097',
+          port: Number(process.env.DIRECT_SMTP_PORT || 25),
+          secure: false,
+          ignoreTLS: true,
+          name: 'linszorgt.nl',
+          connectionTimeout: 10000,
+          greetingTimeout: 10000,
+          socketTimeout: 15000
+        });
 
     const subject = 'Nieuwe vraag via linszorgt.nl';
     const lines = [
@@ -74,7 +79,7 @@ module.exports = async (req, res) => {
     ];
 
     await transporter.sendMail({
-      from: `LinsZorgt formulier <${from}>`,
+      from: `LinsZorgt formulier <${useAuthSmtp ? authFrom : directFrom}>`,
       to,
       replyTo: email || undefined,
       subject,
@@ -83,9 +88,12 @@ module.exports = async (req, res) => {
 
     return res.status(200).json({ success: true });
   } catch (error) {
+    const hasAuth = Boolean(process.env.SMTP_USER && process.env.SMTP_PASS);
     return res.status(500).json({
       success: false,
-      message: 'Verzenden mislukt. Controleer SMTP-instellingen of mailboxrechten.'
+      message: hasAuth
+        ? 'Verzenden mislukt. Controleer SMTP-instellingen of mailboxrechten.'
+        : 'Verzenden mislukt via directe mailroute. Zet SMTP_USER en SMTP_PASS in Vercel als fallback.'
     });
   }
 };
