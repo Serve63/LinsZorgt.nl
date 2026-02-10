@@ -1555,15 +1555,20 @@
             .about-content { padding: 2.25rem; margin: 0; }
 
             .pricing-scroll {
+                flex-direction: column;
                 justify-content: flex-start;
-                padding: 1.25rem 0 2rem;
-                scroll-snap-type: x mandatory;
+                overflow-x: visible;
+                cursor: auto;
+                padding: 1.25rem 0 0.5rem;
+                scroll-snap-type: none;
             }
 
             .pricing-card {
-                flex: 0 0 85%;
-                scroll-snap-align: start;
-                scroll-snap-stop: always;
+                flex: 1 1 auto;
+                width: 100%;
+                max-width: 560px;
+                margin-left: auto;
+                margin-right: auto;
                 padding: 2.15rem;
             }
 
@@ -1590,7 +1595,7 @@
             .about-content { padding: 1.75rem; }
             .about-features { grid-template-columns: 1fr; }
 
-            .pricing-card { flex: 0 0 92%; padding: 1.9rem; }
+            .pricing-card { padding: 1.9rem; }
 
             .overlap-container { padding: 1.6rem; padding-top: 220px; }
             .overlap-image { right: 1.6rem; left: 1.6rem; top: 1.6rem; height: 170px; }
