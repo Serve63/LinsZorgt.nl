@@ -38,15 +38,15 @@ module.exports = async (req, res) => {
       return res.status(400).json({ success: false, message: 'Vul je vraag in.' });
     }
 
-    const user = process.env.SMTP_USER || '';
-    const pass = process.env.SMTP_PASS || '';
+    const user = String(process.env.SMTP_USER || '').trim();
+    const pass = String(process.env.SMTP_PASS || '').trim();
     const useAuthSmtp = Boolean(user && pass);
-    const smtpHost = process.env.SMTP_HOST || 'smtp.ionos.com';
-    const smtpPort = Number(process.env.SMTP_PORT || 587);
+    const smtpHost = String(process.env.SMTP_HOST || 'smtp.ionos.com').trim();
+    const smtpPort = Number(String(process.env.SMTP_PORT || 587).trim());
     const smtpSecure = smtpPort === 465;
-    const to = process.env.CONTACT_TO || 'info@linszorgt.nl';
-    const authFrom = process.env.CONTACT_FROM || user;
-    const directFrom = process.env.CONTACT_FROM || 'formulier@mailer.local';
+    const to = String(process.env.CONTACT_TO || 'info@linszorgt.nl').trim();
+    const authFrom = String(process.env.CONTACT_FROM || user).trim();
+    const directFrom = String(process.env.CONTACT_FROM || 'formulier@mailer.local').trim();
 
     const transporter = useAuthSmtp
       ? nodemailer.createTransport({
