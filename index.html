@@ -1898,12 +1898,12 @@
                         <input type="text" name="honey" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
                         <div class="form-row">
                             <div class="form-field">
-                                <label for="vraag-naam">Naam (optioneel)</label>
-                                <input type="text" id="vraag-naam" name="naam" placeholder="Je naam">
+                                <label for="vraag-naam">Naam *</label>
+                                <input type="text" id="vraag-naam" name="naam" placeholder="Je naam" autocomplete="name" required>
                             </div>
                             <div class="form-field">
-                                <label for="vraag-email">E-mail (optioneel)</label>
-                                <input type="email" id="vraag-email" name="email" placeholder="je@email.nl">
+                                <label for="vraag-email">E-mail *</label>
+                                <input type="email" id="vraag-email" name="email" placeholder="je@email.nl" autocomplete="email" required>
                             </div>
                         </div>
                         <div class="form-field">
@@ -1912,7 +1912,7 @@
                         </div>
                         <div class="form-actions">
                             <button type="submit" class="btn magnetic">Verstuur vraag</button>
-                            <p class="form-note">Je vraag komt direct in het postvak. Liever mailen? <a href="mailto:info@linszorgt.nl">info@linszorgt.nl</a>.</p>
+                            <p class="form-note">Je vraag komt direct in het postvak. Liever bellen? <a href="tel:+31648551774">06-48551774</a>.</p>
                             <p class="form-success" aria-live="polite">Bericht succesvol verzonden. Dankjewel.</p>
                             <p class="form-error" aria-live="polite">Verzenden lukt nu niet. Probeer opnieuw of mail naar info@linszorgt.nl.</p>
                         </div>

@@ -34,6 +34,14 @@ module.exports = async (req, res) => {
       return res.status(200).json({ success: true });
     }
 
+    if (!naam) {
+      return res.status(400).json({ success: false, message: 'Vul je naam in.' });
+    }
+
+    if (!email) {
+      return res.status(400).json({ success: false, message: 'Vul een geldig e-mailadres in.' });
+    }
+
     if (!vraag) {
       return res.status(400).json({ success: false, message: 'Vul je vraag in.' });
     }
