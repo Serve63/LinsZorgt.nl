@@ -133,7 +133,7 @@
             left: 0;
             width: 100%;
             padding: 1.5rem var(--page-gutter);
-            z-index: 1000;
+            z-index: 2000;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -174,6 +174,127 @@
         }
 
         .nav-links a:hover { color: var(--accent); }
+
+        .nav-toggle {
+            display: none;
+            width: 46px;
+            height: 46px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(10, 10, 10, 0.65);
+            color: var(--text-primary);
+            cursor: none;
+            position: relative;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .nav-toggle-bars,
+        .nav-toggle-bars::before,
+        .nav-toggle-bars::after {
+            content: '';
+            display: block;
+            width: 18px;
+            height: 2px;
+            background: currentColor;
+            border-radius: 2px;
+            transition: transform 0.35s var(--ease-out-expo), opacity 0.2s ease;
+        }
+
+        .nav-toggle-bars { position: relative; }
+        .nav-toggle-bars::before,
+        .nav-toggle-bars::after {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .nav-toggle-bars::before { transform: translateY(-6px); }
+        .nav-toggle-bars::after { transform: translateY(6px); }
+
+        body.nav-open .nav-toggle-bars { background: transparent; }
+        body.nav-open .nav-toggle-bars::before { transform: translateY(0) rotate(45deg); }
+        body.nav-open .nav-toggle-bars::after { transform: translateY(0) rotate(-45deg); }
+
+        .nav-drawer {
+            position: fixed;
+            inset: 0;
+            z-index: 1950;
+            display: none;
+        }
+
+        body.nav-open { overflow: hidden; }
+        body.nav-open .nav-drawer { display: block; }
+
+        .nav-drawer-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(16px);
+        }
+
+        .nav-drawer-panel {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: min(420px, 88vw);
+            height: 100%;
+            padding: 1.5rem;
+            background: rgba(10, 10, 10, 0.92);
+            border-left: 1px solid var(--border);
+            transform: translateX(110%);
+            transition: transform 0.45s var(--ease-out-expo);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        body.nav-open .nav-drawer-panel { transform: translateX(0); }
+
+        .nav-drawer-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .nav-drawer-close {
+            width: 42px;
+            height: 42px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .nav-drawer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            padding-top: 0.5rem;
+        }
+
+        .nav-drawer-links a:not(.btn) {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            padding: 0.9rem 1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .nav-drawer-links a:not(.btn):active { transform: translateY(1px); }
+
+        .nav-drawer-links .btn {
+            width: 100%;
+            justify-content: center;
+            font-size: 0.95rem;
+        }
 
         .btn {
             display: inline-flex;
@@ -1267,8 +1388,9 @@
         /* Responsive */
         @media (max-width: 1024px) {
             :root { --page-gutter: 2rem; }
-            body { cursor: auto; }
+            body { cursor: auto; background-attachment: scroll; }
             .cursor, .cursor-dot { display: none; }
+            .btn, .nav-links a, .faq-question, .contact-option { cursor: pointer; }
             
             .hero { grid-template-columns: 1fr; padding-top: 8rem; }
             .hero-visual { height: 50vh; margin-top: 2rem; display: none; }
@@ -1382,6 +1504,105 @@
             nav { padding: 1rem var(--page-gutter); mix-blend-mode: normal; background: rgba(10,10,10,0.9); }
         }
 
+        @media (max-width: 768px) {
+            :root { --page-gutter: 1.5rem; }
+
+            .ambient-orbs { display: none; }
+            .noise-overlay { display: none; }
+
+            nav { gap: 1rem; }
+            .nav-links { display: none; }
+            .nav-toggle { display: inline-flex; cursor: pointer; }
+
+            section { padding: 3.75rem var(--page-gutter); }
+
+            .hero {
+                min-height: auto;
+                padding: 7rem var(--page-gutter) 2.5rem;
+                gap: 1.5rem;
+            }
+
+            .hero h1 { font-size: clamp(2.35rem, 10vw, 3.25rem); }
+            .hero-subtitle { max-width: 100%; font-size: 1rem; }
+
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 1.5rem;
+                margin-top: 2.25rem;
+                padding-top: 1.5rem;
+            }
+
+            .hero-stat { flex: 1 1 140px; }
+            .hero-stat-value { font-size: 1.6rem; }
+
+            .hero-visual {
+                display: grid;
+                height: auto;
+                grid-template-columns: 1fr;
+                gap: 0.9rem;
+                margin-top: 2rem;
+            }
+
+            .hero-image-main { grid-row: auto; aspect-ratio: 4 / 3; }
+            .hero-image-secondary.photo { aspect-ratio: 4 / 3; }
+            .hero-image-secondary { padding: 1.5rem; }
+
+            .approach-grid { gap: 1rem; }
+            .approach-card { padding: 2rem; }
+            .card-num { font-size: 3.2rem; }
+
+            .about-image { height: 340px; }
+            .about-content { padding: 2.25rem; margin: 0; }
+
+            .pricing-scroll {
+                justify-content: flex-start;
+                padding: 1.25rem 0 2rem;
+                scroll-snap-type: x mandatory;
+            }
+
+            .pricing-card {
+                flex: 0 0 85%;
+                scroll-snap-align: start;
+                scroll-snap-stop: always;
+                padding: 2.15rem;
+            }
+
+            .footer-address { white-space: normal; }
+        }
+
+        @media (max-width: 480px) {
+            :root { --page-gutter: 1.1rem; }
+
+            nav { padding: 0.9rem var(--page-gutter); }
+            .logo { font-size: 1.25rem; }
+            .nav-toggle { width: 44px; height: 44px; }
+
+            section { padding: 3.25rem var(--page-gutter); }
+
+            .hero { padding-top: 6.5rem; }
+            .hero h1 { font-size: clamp(2.05rem, 10.8vw, 2.8rem); }
+
+            .hero-stats { gap: 1.1rem; }
+            .hero-stat { flex: 1 1 120px; }
+
+            .approach-card { padding: 1.6rem; }
+
+            .about-content { padding: 1.75rem; }
+            .about-features { grid-template-columns: 1fr; }
+
+            .pricing-card { flex: 0 0 92%; padding: 1.9rem; }
+
+            .overlap-container { padding: 1.6rem; padding-top: 220px; }
+            .overlap-image { right: 1.6rem; left: 1.6rem; top: 1.6rem; height: 170px; }
+        }
+
+        @media (hover: none) {
+            .btn:hover { transform: none; box-shadow: none; }
+            .approach-card:hover { transform: none; }
+            .pricing-card:hover { transform: none; }
+            .nav-links a:hover { color: inherit; }
+        }
+
         @media (min-width: 1025px) {
             #aanpak .section-header h2 { white-space: nowrap; }
             .hero-line { white-space: nowrap; }
@@ -1408,7 +1629,26 @@
             <a href="#trajecten">Trajecten</a>
             <a href="#contact" class="btn magnetic">Start direct</a>
         </div>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-controls="nav-drawer" aria-expanded="false">
+            <span class="nav-toggle-bars" aria-hidden="true"></span>
+        </button>
     </nav>
+
+    <div class="nav-drawer" id="nav-drawer" aria-hidden="true">
+        <div class="nav-drawer-backdrop" data-nav-close></div>
+        <div class="nav-drawer-panel" role="dialog" aria-modal="true" aria-label="Menu">
+            <div class="nav-drawer-header">
+                <a href="#" class="logo" data-nav-link>LinsZorgT</a>
+                <button type="button" class="nav-drawer-close" aria-label="Sluit menu" data-nav-close>X</button>
+            </div>
+            <div class="nav-drawer-links">
+                <a href="#aanpak" data-nav-link>Werkwijze</a>
+                <a href="#over" data-nav-link>Over</a>
+                <a href="#trajecten" data-nav-link>Trajecten</a>
+                <a href="#contact" class="btn magnetic" data-nav-link>Start direct</a>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero -->
     <section class="hero">
@@ -1783,6 +2023,39 @@
             const nav = document.getElementById('navbar');
             nav.classList.toggle('scrolled', window.scrollY > 50);
         });
+
+        // Mobile nav drawer
+        const navToggle = document.querySelector('.nav-toggle');
+        const navDrawer = document.getElementById('nav-drawer');
+
+        const setNavOpen = (open) => {
+            document.body.classList.toggle('nav-open', open);
+            if (navToggle) navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            if (navDrawer) navDrawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+        };
+
+        const closeNav = () => setNavOpen(false);
+
+        if (navToggle && navDrawer) {
+            navToggle.addEventListener('click', () => {
+                const isOpen = document.body.classList.contains('nav-open');
+                setNavOpen(!isOpen);
+            });
+
+            navDrawer.addEventListener('click', (event) => {
+                const target = event.target;
+                if (!(target instanceof Element)) return;
+                if (target.matches('[data-nav-close], [data-nav-link]')) closeNav();
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') closeNav();
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.matchMedia('(min-width: 769px)').matches) closeNav();
+            });
+        }
 
         // Drag to scroll pricing
         const slider = document.querySelector('.pricing-scroll');

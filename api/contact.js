@@ -41,16 +41,21 @@ module.exports = async (req, res) => {
     const user = process.env.SMTP_USER || '';
     const pass = process.env.SMTP_PASS || '';
     const useAuthSmtp = Boolean(user && pass);
+    const smtpHost = process.env.SMTP_HOST || 'smtp.ionos.com';
+    const smtpPort = Number(process.env.SMTP_PORT || 587);
+    const smtpSecure = smtpPort === 465;
     const to = process.env.CONTACT_TO || 'info@linszorgt.nl';
     const authFrom = process.env.CONTACT_FROM || user;
     const directFrom = process.env.CONTACT_FROM || 'formulier@mailer.local';
 
     const transporter = useAuthSmtp
       ? nodemailer.createTransport({
-          host: process.env.SMTP_HOST || 'smtp.ionos.com',
-          port: Number(process.env.SMTP_PORT || 587),
-          secure: Number(process.env.SMTP_PORT || 587) === 465,
+          host: smtpHost,
+          port: smtpPort,
+          secure: smtpSecure,
           auth: { user, pass },
+          requireTLS: !smtpSecure,
+          tls: { servername: smtpHost },
           connectionTimeout: 10000,
           greetingTimeout: 10000,
           socketTimeout: 15000
@@ -88,6 +93,14 @@ module.exports = async (req, res) => {
 
     return res.status(200).json({ success: true });
   } catch (error) {
+    console.error('contact form send failed', {
+      message: error && error.message,
+      code: error && error.code,
+      response: error && error.response,
+      responseCode: error && error.responseCode,
+      command: error && error.command
+    });
+
     const hasAuth = Boolean(process.env.SMTP_USER && process.env.SMTP_PASS);
     return res.status(500).json({
       success: false,
