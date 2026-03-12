@@ -704,17 +704,18 @@
         /* Story Section */
         .story-header {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
+            flex-direction: column;
+            align-items: center;
             gap: 2rem;
             margin-bottom: 3rem;
-            max-width: 1200px;
+            max-width: 900px;
             margin-left: auto;
             margin-right: auto;
+            text-align: center;
         }
 
         .story-header > div {
-            max-width: 36rem;
+            max-width: 100%;
         }
 
         .story-header h2 {
@@ -723,7 +724,7 @@
 
         .story-header p {
             color: var(--text-secondary);
-            max-width: 32rem;
+            max-width: 700px;
             font-size: 1rem;
             line-height: 1.75;
         }
