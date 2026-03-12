@@ -549,6 +549,13 @@
             filter: grayscale(100%) contrast(1.1);
         }
 
+        .hero-image-main img.photo-color,
+        .hero-image-secondary.photo img.photo-color,
+        .about-image.photo-color,
+        .overlap-image img.photo-color {
+            filter: none;
+        }
+
         .hero-quote {
             font-family: 'Oswald', sans-serif;
             font-size: 1.3rem;
@@ -694,28 +701,34 @@
             color: var(--text-secondary);
         }
 
-        /* Pricing Section */
-        .pricing-header {
+        /* Story Section */
+        .story-header {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            text-align: center;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 2rem;
             margin-bottom: 3rem;
-            max-width: 1400px;
+            max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .pricing-header h2 {
+        .story-header > div {
+            max-width: 36rem;
+        }
+
+        .story-header h2 {
             font-size: clamp(2rem, 4vw, 3rem);
         }
 
-        .pricing-header p {
-            text-align: center;
+        .story-header p {
+            color: var(--text-secondary);
+            max-width: 32rem;
+            font-size: 1rem;
+            line-height: 1.75;
         }
 
-        .pricing-scroll {
+        .story-scroll {
             display: flex;
             gap: 1.5rem;
             overflow-x: auto;
@@ -725,112 +738,76 @@
             cursor: grab;
             max-width: 1400px;
             margin: 0 auto;
-            justify-content: center;
         }
 
-        .pricing-scroll::-webkit-scrollbar {
+        .story-scroll::-webkit-scrollbar {
             display: none;
         }
 
-        .pricing-card {
-            flex: 0 0 350px;
+        .story-card {
+            flex: 0 0 340px;
             background: var(--bg-card);
             border: 1px solid var(--border);
-            padding: 2.5rem;
             border-radius: 4px;
             transition: all 0.3s var(--ease-out-expo);
             position: relative;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
         }
 
-        .pricing-card.featured {
-            background: rgba(209, 124, 115, 0.08);
-            border-color: var(--accent);
-            transform: scale(1.02);
-        }
-
-        .pricing-card:hover {
+        .story-card:hover {
             transform: translateY(-10px);
             border-color: var(--accent);
         }
 
-        .pricing-card.featured:hover {
-            transform: scale(1.02) translateY(-10px);
+        .story-media {
+            aspect-ratio: 4 / 5;
+            background: var(--bg-secondary);
+            overflow: hidden;
         }
 
-        .pricing-tag {
-            position: absolute;
-            top: -1px;
-            right: 2rem;
-            background: var(--accent);
-            color: white;
-            padding: 0.5rem 1rem;
-            font-size: 0.7rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            font-weight: 600;
+        .story-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
-        .pricing-name {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-tertiary);
-            margin-bottom: 0.5rem;
+        .story-card.is-monochrome .story-media img {
+            filter: grayscale(100%) contrast(1.05);
         }
 
-        .pricing-price {
-            font-family: 'Oswald', sans-serif;
-            font-size: 3rem;
-            color: var(--text-primary);
-            margin-bottom: 0.6rem;
-        }
-
-        .pricing-price span {
-            font-size: 1rem;
-            color: var(--text-tertiary);
-        }
-
-        .pricing-per-session {
-            font-size: 0.85rem;
-            color: var(--text-tertiary);
-            letter-spacing: 0.03em;
-            margin-bottom: 1.6rem;
-        }
-
-        .pricing-list {
-            list-style: none;
-            margin-bottom: 2rem;
+        .story-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
             flex-grow: 1;
         }
 
-        .pricing-list li {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.9rem;
+        .story-step {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--text-tertiary);
+        }
+
+        .story-card h3 {
+            font-size: 1.55rem;
+        }
+
+        .story-card p {
             color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            font-size: 0.96rem;
+            line-height: 1.7;
         }
 
-        .pricing-list li::before {
-            content: '→';
-            color: var(--accent);
-            font-size: 0.8rem;
-        }
-
-        .pricing-card .btn {
-            width: 100%;
-            justify-content: center;
-        }
-
-        .pricing-note {
+        .story-note {
             text-align: center;
-            color: var(--text-secondary);
+            color: var(--text-tertiary);
             font-size: 0.9rem;
-            margin-top: 1rem;
+            margin-top: 1.25rem;
         }
 
         /* FAQ Section */
@@ -1488,8 +1465,14 @@
                 border-bottom: 1px solid var(--border);
             }
             
-            .pricing-header { flex-direction: column; align-items: center; text-align: center; gap: 1rem; }
-            .pricing-card { flex: 0 0 300px; }
+            .story-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .story-card { flex: 0 0 300px; }
             
             .footer-inner {
                 grid-template-columns: 1fr;
@@ -1554,7 +1537,7 @@
             .about-image { height: 340px; }
             .about-content { padding: 2.25rem; margin: 0; }
 
-            .pricing-scroll {
+            .story-scroll {
                 flex-direction: column;
                 justify-content: flex-start;
                 overflow-x: visible;
@@ -1563,13 +1546,12 @@
                 scroll-snap-type: none;
             }
 
-            .pricing-card {
+            .story-card {
                 flex: 1 1 auto;
                 width: 100%;
                 max-width: 560px;
                 margin-left: auto;
                 margin-right: auto;
-                padding: 2.15rem;
             }
 
             .footer-address { white-space: normal; }
@@ -1595,7 +1577,7 @@
             .about-content { padding: 1.75rem; }
             .about-features { grid-template-columns: 1fr; }
 
-            .pricing-card { padding: 1.9rem; }
+            .story-body { padding: 1.3rem; }
 
             .overlap-container { padding: 1.6rem; padding-top: 220px; }
             .overlap-image { right: 1.6rem; left: 1.6rem; top: 1.6rem; height: 170px; }
@@ -1604,7 +1586,7 @@
         @media (hover: none) {
             .btn:hover { transform: none; box-shadow: none; }
             .approach-card:hover { transform: none; }
-            .pricing-card:hover { transform: none; }
+            .story-card:hover { transform: none; }
             .nav-links a:hover { color: inherit; }
         }
 
@@ -1631,7 +1613,7 @@
         <div class="nav-links">
             <a href="#aanpak">Werkwijze</a>
             <a href="#over">Over</a>
-            <a href="#trajecten">Trajecten</a>
+            <a href="#trajecten">In beeld</a>
             <a href="#contact" class="btn magnetic">Start direct</a>
         </div>
         <button class="nav-toggle" type="button" aria-label="Open menu" aria-controls="nav-drawer" aria-expanded="false">
@@ -1649,7 +1631,7 @@
             <div class="nav-drawer-links">
                 <a href="#aanpak" data-nav-link>Werkwijze</a>
                 <a href="#over" data-nav-link>Over</a>
-                <a href="#trajecten" data-nav-link>Trajecten</a>
+                <a href="#trajecten" data-nav-link>In beeld</a>
                 <a href="#contact" class="btn magnetic" data-nav-link>Start direct</a>
             </div>
         </div>
@@ -1680,8 +1662,8 @@
                     <span class="hero-stat-label">Per sessie</span>
                 </div>
                 <div class="hero-stat">
-                    <span class="hero-stat-value">Tilburg én Eindhoven</span>
-                    <span class="hero-stat-label">Regio</span>
+                    <span class="hero-stat-value">Flexibel</span>
+                    <span class="hero-stat-label">Aan huis, buiten of Reeshof</span>
                 </div>
             </div>
         </div>
@@ -1698,10 +1680,10 @@
 
         <div class="hero-visual fade-up" style="transition-delay: 0.2s;">
             <div class="hero-image-main">
-                <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?w=800&q=80" alt="Bokscoaching">
+                <img src="assets/images/site/linsey-knee-color.jpg" alt="Bokscoaching in actie" class="photo-color" loading="eager" fetchpriority="high">
             </div>
             <div class="hero-image-secondary photo">
-                <img src="https://images.unsplash.com/photo-1517832207067-4db24a2ae47c?w=800&q=80" alt="Bokscoaching training" decoding="async">
+                <img src="assets/images/site/linsey-sit-bw.jpg" alt="Rustige coachingsessie tijdens bokstherapie" loading="lazy" decoding="async">
             </div>
             <div class="hero-image-secondary">
                 <div class="hero-quote">"Onder druk zie je wie je bent — en waar beweging nodig is."</div>
@@ -1741,7 +1723,7 @@
     <!-- About -->
     <section id="over" class="about-section">
         <div class="about-image-wrap fade-up">
-            <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=800&q=80" alt="Coaching" class="about-image">
+            <img src="assets/images/site/linsey-intake.jpg" alt="Linsey in gesprek tijdens een intake" class="about-image photo-color" loading="lazy" decoding="async">
         </div>
         
         <div class="about-content fade-up" style="transition-delay: 0.2s;">
@@ -1764,69 +1746,93 @@
                     <span class="about-feature-label">Vertrouwde omgeving</span>
                 </div>
                 <div class="about-feature">
-                    <span class="about-feature-value">Tilburg én Eindhoven</span>
-                    <span class="about-feature-label">Regio</span>
+                    <span class="about-feature-value">Flexibel</span>
+                    <span class="about-feature-label">Locatie in overleg</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing -->
+    <!-- Story -->
     <section id="trajecten">
-        <div class="pricing-header fade-up">
+        <div class="story-header fade-up">
             <div>
-                <div class="eyebrow">Investering</div>
-                <h2>Kies je traject</h2>
+                <div class="eyebrow">In beeld</div>
+                <h2>Zo ziet werken met LinsZorgT eruit</h2>
             </div>
-            <p style="color: var(--text-secondary); max-width: 700px; text-align: center; font-size: 0.9rem;">
-                Gedragsverandering kost tijd. Daarom werk ik het liefst in trajecten, zodat er ruimte is om echt te verdiepen. Een losse sessie is op aanvraag mogelijk (€75 / 60 min).
+            <p>
+                Geen vaste prijzen op de site. In het intakegesprek stemmen we af wat past bij jouw hulpvraag, tempo en setting. Hieronder krijg je alvast een eerlijke indruk van de sessies.
             </p>
         </div>
 
-        <div class="pricing-scroll">
-            <div class="pricing-card fade-up">
-                <div class="pricing-name">Kennismaking</div>
-                <div class="pricing-price">€350</div>
-                <div class="pricing-per-session">€70 per sessie</div>
-                <ul class="pricing-list">
-                    <li>5 sessies (eerste beweging)</li>
-                    <li>Focus op veiligheid & vertrouwen</li>
-                    <li>Bewustwording van patronen</li>
-                    <li>Geschikt voor afgebakend thema</li>
-                </ul>
-                <a href="#contact" class="btn outline">Kies dit</a>
-            </div>
+        <div class="story-scroll">
+            <article class="story-card fade-up">
+                <div class="story-media">
+                    <img src="assets/images/site/linsey-intake.jpg" alt="Intakegesprek aan tafel" loading="lazy" decoding="async">
+                </div>
+                <div class="story-body">
+                    <div class="story-step">01 · Intake</div>
+                    <h3>Afstemmen op jouw vraag</h3>
+                    <p>We starten bij wat jij nodig hebt: veiligheid, tempo, hulpvraag en ruimte om eerlijk te onderzoeken wat speelt.</p>
+                </div>
+            </article>
 
-            <div class="pricing-card featured fade-up" style="transition-delay: 0.1s;">
-                <div class="pricing-tag">Aanbevolen</div>
-                <div class="pricing-name">Verdieping</div>
-                <div class="pricing-price">€680</div>
-                <div class="pricing-per-session">€68 per sessie</div>
-                <ul class="pricing-list">
-                    <li>10 sessies (meest gekozen)</li>
-                    <li>Stress, grenzen & zelfvertrouwen</li>
-                    <li>Spiegelen en oefenen onder druk</li>
-                    <li>Nieuw gedrag verankeren</li>
-                    <li>Tussentijdse evaluatie</li>
-                </ul>
-                <a href="#contact" class="btn">Start hier</a>
-            </div>
+            <article class="story-card is-monochrome fade-up" style="transition-delay: 0.08s;">
+                <div class="story-media">
+                    <img src="assets/images/site/linsey-sit-bw.jpg" alt="Coachingsmoment op de grond" loading="lazy" decoding="async">
+                </div>
+                <div class="story-body">
+                    <div class="story-step">02 · Vertragen</div>
+                    <h3>Voelen wat er gebeurt</h3>
+                    <p>Soms zit de beweging juist in stil worden, spiegelen en ontdekken wat spanning of weerstand met je doet.</p>
+                </div>
+            </article>
 
-            <div class="pricing-card fade-up" style="transition-delay: 0.2s;">
-                <div class="pricing-name">Intensief</div>
-                <div class="pricing-price">€1.300</div>
-                <div class="pricing-per-session">€65 per sessie</div>
-                <ul class="pricing-list">
-                    <li>20 sessies (duurzame verandering)</li>
-                    <li>Diepgewortelde patronen</li>
-                    <li>Huiswerk & tools</li>
-                    <li>Integratie in dagelijks leven</li>
-                    <li>Tussentijdse evaluatie</li>
-                </ul>
-                <a href="#contact" class="btn outline">Kies dit</a>
-            </div>
+            <article class="story-card fade-up" style="transition-delay: 0.16s;">
+                <div class="story-media">
+                    <img src="assets/images/site/linsey-bag-color.jpg" alt="Oefenen met bokszak en begeleiding" loading="lazy" decoding="async">
+                </div>
+                <div class="story-body">
+                    <div class="story-step">03 · Oefenen</div>
+                    <h3>Patronen zichtbaar maken</h3>
+                    <p>Onder druk zie je sneller wat je automatisch doet: controleren, inhouden, forceren of juist terugtrekken.</p>
+                </div>
+            </article>
+
+            <article class="story-card is-monochrome fade-up" style="transition-delay: 0.24s;">
+                <div class="story-media">
+                    <img src="assets/images/site/linsey-mirror-bw.jpg" alt="Spiegeloefening tijdens bokscoaching" loading="lazy" decoding="async">
+                </div>
+                <div class="story-body">
+                    <div class="story-step">04 · Bewustwording</div>
+                    <h3>Spiegelen in beweging</h3>
+                    <p>Via houding, ademhaling en contact wordt duidelijk waar je grenzen liggen en waar juist nieuwe ruimte ontstaat.</p>
+                </div>
+            </article>
+
+            <article class="story-card fade-up" style="transition-delay: 0.32s;">
+                <div class="story-media">
+                    <img src="assets/images/site/linsey-knee-color.jpg" alt="Krachtoefening met pads" loading="lazy" decoding="async">
+                </div>
+                <div class="story-body">
+                    <div class="story-step">05 · Actie</div>
+                    <h3>Werken vanuit jouw tempo</h3>
+                    <p>Je hoeft niet sportief te zijn. We bouwen op vanuit wat jouw lichaam en hoofd op dat moment aankunnen.</p>
+                </div>
+            </article>
+
+            <article class="story-card is-monochrome fade-up" style="transition-delay: 0.4s;">
+                <div class="story-media">
+                    <img src="assets/images/site/linsey-knee-bw.jpg" alt="Intensieve oefening in zwart-wit" loading="lazy" decoding="async">
+                </div>
+                <div class="story-body">
+                    <div class="story-step">06 · Verankeren</div>
+                    <h3>Grenzen en vertrouwen</h3>
+                    <p>We zoeken stevigheid zonder over je grens te gaan, zodat het nieuwe gedrag ook buiten de sessie voelbaar blijft.</p>
+                </div>
+            </article>
         </div>
-        <p class="pricing-note fade-up">In termijnen betalen mogelijk. Informeer hiernaar.</p>
+        <p class="story-note fade-up">Praktische invulling en investering bespreken we pas na het intakegesprek, zodat het traject echt past bij jouw behoeften.</p>
     </section>
 
     <!-- FAQ -->
@@ -1838,7 +1844,7 @@
                 <p>Alles wat je wilt weten over bokscoaching, of het nu gaat om ervaring, geschiktheid of de eerste stap.</p>
                 
                 <div class="faq-visual">
-                    <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=600&q=80" alt="Focus">
+                    <img src="assets/images/site/linsey-mirror-bw.jpg" alt="Spiegeloefening tijdens coaching" loading="lazy" decoding="async">
                     <div class="faq-visual-text">"Geen vraag is te klein om te stellen"</div>
                 </div>
             </div>
@@ -1888,7 +1894,18 @@
                     </div>
                 </div>
 
-                <div id="vraag" class="question-wrap question-mini fade-up" style="transition-delay: 0.4s;">
+                <div class="faq-item fade-up" style="transition-delay: 0.4s;">
+                    <button class="faq-question magnetic">
+                        <span class="faq-num">05</span>
+                        <span class="faq-text">Waar vinden de sessies plaats?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        De locatie spreken we af op basis van wat er uit het intakegesprek naar voren komt. Ik ben daarin flexibel: aan huis, buiten of in een afgehuurde 1-op-1 boks- of sportruimte in de Reeshof.
+                    </div>
+                </div>
+
+                <div id="vraag" class="question-wrap question-mini fade-up" style="transition-delay: 0.5s;">
                     <div class="question-header">
                         <div class="eyebrow">Stel je vraag</div>
                         <h2>Mis je een onderwerp?</h2>
@@ -1926,7 +1943,7 @@
     <section id="contact" class="final-cta">
         <div class="overlap-container fade-up">
             <div class="overlap-image">
-                <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?w=800&q=80" alt="Contact">
+                <img src="assets/images/site/linsey-bag-color.jpg" alt="Persoonlijke bokscoaching" class="photo-color" loading="lazy" decoding="async">
             </div>
 
             <div class="overlap-content">
@@ -1953,14 +1970,14 @@
         <div class="footer-inner">
             <div class="footer-brand">
                 <div class="footer-logo">LinsZorgT</div>
-                <p class="footer-tagline">Bokscoaching & therapie in de regio Tilburg én Eindhoven. Mentale coaching en fysieke training in één.</p>
+                <p class="footer-tagline">Bokscoaching & therapie in Tilburg en omgeving. Mentale coaching en fysieke training in één, op een locatie die past bij jouw traject.</p>
             </div>
 
             <div class="footer-links">
                 <div class="footer-section-title">Snel naar</div>
                 <a href="#aanpak">Werkwijze</a>
                 <a href="#over">Over</a>
-                <a href="#trajecten">Trajecten</a>
+                <a href="#trajecten">In beeld</a>
                 <a href="#contact">Contact</a>
             </div>
 
@@ -1968,12 +1985,12 @@
                 <div class="footer-section-title">Contact</div>
                 <a href="mailto:info@linszorgt.nl">info@linszorgt.nl</a>
                 <a href="tel:+31648551774">06-48551774</a>
-                <span class="footer-address">Tilburg én Eindhoven Regio</span>
+                <span class="footer-address">Tilburg & omgeving</span>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <div>&copy; 2026 LinsZorgT — Bokscoaching & Therapie Tilburg</div>
+            <div>&copy; 2026 LinsZorgT — Bokscoaching & Therapie</div>
             <div>Geen standaard sportschool. Wel beweging & aandacht.</div>
         </div>
     </footer>
@@ -2063,8 +2080,8 @@
             });
         }
 
-        // Drag to scroll pricing
-        const slider = document.querySelector('.pricing-scroll');
+        // Drag to scroll story cards
+        const slider = document.querySelector('.story-scroll');
         if (slider) {
             let isDown = false, startX, scrollLeft;
             
