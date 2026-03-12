@@ -738,6 +738,7 @@
             cursor: grab;
             max-width: 1400px;
             margin: 0 auto;
+            justify-content: center;
         }
 
         .story-scroll::-webkit-scrollbar {
@@ -756,26 +757,13 @@
             overflow: hidden;
         }
 
+        .story-card.story-card--text {
+            min-height: 100%;
+        }
+
         .story-card:hover {
             transform: translateY(-10px);
             border-color: var(--accent);
-        }
-
-        .story-media {
-            aspect-ratio: 4 / 5;
-            background: var(--bg-secondary);
-            overflow: hidden;
-        }
-
-        .story-media img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .story-card.is-monochrome .story-media img {
-            filter: grayscale(100%) contrast(1.05);
         }
 
         .story-body {
@@ -854,6 +842,11 @@
             object-fit: cover;
             filter: grayscale(100%) contrast(1.1) brightness(0.7);
             opacity: 0.6;
+        }
+
+        .faq-visual img.photo-color {
+            filter: brightness(0.78);
+            opacity: 0.92;
         }
 
         .faq-visual-text {
@@ -1613,7 +1606,7 @@
         <div class="nav-links">
             <a href="#aanpak">Werkwijze</a>
             <a href="#over">Over</a>
-            <a href="#trajecten">In beeld</a>
+            <a href="#trajecten">Traject</a>
             <a href="#contact" class="btn magnetic">Start direct</a>
         </div>
         <button class="nav-toggle" type="button" aria-label="Open menu" aria-controls="nav-drawer" aria-expanded="false">
@@ -1631,7 +1624,7 @@
             <div class="nav-drawer-links">
                 <a href="#aanpak" data-nav-link>Werkwijze</a>
                 <a href="#over" data-nav-link>Over</a>
-                <a href="#trajecten" data-nav-link>In beeld</a>
+                <a href="#trajecten" data-nav-link>Traject</a>
                 <a href="#contact" class="btn magnetic" data-nav-link>Start direct</a>
             </div>
         </div>
@@ -1683,7 +1676,7 @@
                 <img src="assets/images/site/linsey-knee-color.jpg" alt="Bokscoaching in actie" class="photo-color" loading="eager" fetchpriority="high">
             </div>
             <div class="hero-image-secondary photo">
-                <img src="assets/images/site/linsey-sit-bw.jpg" alt="Rustige coachingsessie tijdens bokstherapie" loading="lazy" decoding="async">
+                <img src="assets/images/site/linsey-bag-color.jpg" alt="Bokscoaching met bokszak" class="photo-color" loading="lazy" decoding="async">
             </div>
             <div class="hero-image-secondary">
                 <div class="hero-quote">"Onder druk zie je wie je bent — en waar beweging nodig is."</div>
@@ -1757,82 +1750,40 @@
     <section id="trajecten">
         <div class="story-header fade-up">
             <div>
-                <div class="eyebrow">In beeld</div>
-                <h2>Zo ziet werken met LinsZorgT eruit</h2>
+                <div class="eyebrow">Traject op maat</div>
+                <h2>Na de intake bepalen we samen wat past</h2>
             </div>
             <p>
-                Geen vaste prijzen op de site. In het intakegesprek stemmen we af wat past bij jouw hulpvraag, tempo en setting. Hieronder krijg je alvast een eerlijke indruk van de sessies.
+                Geen vaste prijzen op de site. In het intakegesprek kijken we naar jouw hulpvraag, frequentie, locatie en of een korter of langer traject logisch is.
             </p>
         </div>
 
         <div class="story-scroll">
-            <article class="story-card fade-up">
-                <div class="story-media">
-                    <img src="assets/images/site/linsey-intake.jpg" alt="Intakegesprek aan tafel" loading="lazy" decoding="async">
-                </div>
+            <article class="story-card story-card--text fade-up">
                 <div class="story-body">
-                    <div class="story-step">01 · Intake</div>
+                    <div class="story-step">01 · Intakegesprek</div>
                     <h3>Afstemmen op jouw vraag</h3>
                     <p>We starten bij wat jij nodig hebt: veiligheid, tempo, hulpvraag en ruimte om eerlijk te onderzoeken wat speelt.</p>
                 </div>
             </article>
 
-            <article class="story-card is-monochrome fade-up" style="transition-delay: 0.08s;">
-                <div class="story-media">
-                    <img src="assets/images/site/linsey-sit-bw.jpg" alt="Coachingsmoment op de grond" loading="lazy" decoding="async">
-                </div>
+            <article class="story-card story-card--text fade-up" style="transition-delay: 0.08s;">
                 <div class="story-body">
-                    <div class="story-step">02 · Vertragen</div>
-                    <h3>Voelen wat er gebeurt</h3>
-                    <p>Soms zit de beweging juist in stil worden, spiegelen en ontdekken wat spanning of weerstand met je doet.</p>
+                    <div class="story-step">02 · Sessies op maat</div>
+                    <h3>Locatie en frequentie in overleg</h3>
+                    <p>Aan huis, buiten of in een gehuurde 1-op-1 boks- of sportruimte in de Reeshof. We kiezen wat het best past bij jouw traject.</p>
                 </div>
             </article>
 
-            <article class="story-card fade-up" style="transition-delay: 0.16s;">
-                <div class="story-media">
-                    <img src="assets/images/site/linsey-bag-color.jpg" alt="Oefenen met bokszak en begeleiding" loading="lazy" decoding="async">
-                </div>
+            <article class="story-card story-card--text fade-up" style="transition-delay: 0.16s;">
                 <div class="story-body">
-                    <div class="story-step">03 · Oefenen</div>
-                    <h3>Patronen zichtbaar maken</h3>
-                    <p>Onder druk zie je sneller wat je automatisch doet: controleren, inhouden, forceren of juist terugtrekken.</p>
-                </div>
-            </article>
-
-            <article class="story-card is-monochrome fade-up" style="transition-delay: 0.24s;">
-                <div class="story-media">
-                    <img src="assets/images/site/linsey-mirror-bw.jpg" alt="Spiegeloefening tijdens bokscoaching" loading="lazy" decoding="async">
-                </div>
-                <div class="story-body">
-                    <div class="story-step">04 · Bewustwording</div>
-                    <h3>Spiegelen in beweging</h3>
-                    <p>Via houding, ademhaling en contact wordt duidelijk waar je grenzen liggen en waar juist nieuwe ruimte ontstaat.</p>
-                </div>
-            </article>
-
-            <article class="story-card fade-up" style="transition-delay: 0.32s;">
-                <div class="story-media">
-                    <img src="assets/images/site/linsey-knee-color.jpg" alt="Krachtoefening met pads" loading="lazy" decoding="async">
-                </div>
-                <div class="story-body">
-                    <div class="story-step">05 · Actie</div>
-                    <h3>Werken vanuit jouw tempo</h3>
-                    <p>Je hoeft niet sportief te zijn. We bouwen op vanuit wat jouw lichaam en hoofd op dat moment aankunnen.</p>
-                </div>
-            </article>
-
-            <article class="story-card is-monochrome fade-up" style="transition-delay: 0.4s;">
-                <div class="story-media">
-                    <img src="assets/images/site/linsey-knee-bw.jpg" alt="Intensieve oefening in zwart-wit" loading="lazy" decoding="async">
-                </div>
-                <div class="story-body">
-                    <div class="story-step">06 · Verankeren</div>
-                    <h3>Grenzen en vertrouwen</h3>
-                    <p>We zoeken stevigheid zonder over je grens te gaan, zodat het nieuwe gedrag ook buiten de sessie voelbaar blijft.</p>
+                    <div class="story-step">03 · Werkgevers</div>
+                    <h3>Ook inzetbaar via werkgever</h3>
+                    <p>Trajecten kunnen ook via vitaliteits- of opleidingsbudget lopen, met maatwerk en facturatie waar nodig.</p>
                 </div>
             </article>
         </div>
-        <p class="story-note fade-up">Praktische invulling en investering bespreken we pas na het intakegesprek, zodat het traject echt past bij jouw behoeften.</p>
+        <p class="story-note fade-up">De praktische invulling en investering bespreken we pas na het intakegesprek, zodat het traject echt past bij jouw behoeften.</p>
     </section>
 
     <!-- FAQ -->
@@ -1844,7 +1795,7 @@
                 <p>Alles wat je wilt weten over bokscoaching, of het nu gaat om ervaring, geschiktheid of de eerste stap.</p>
                 
                 <div class="faq-visual">
-                    <img src="assets/images/site/linsey-mirror-bw.jpg" alt="Spiegeloefening tijdens coaching" loading="lazy" decoding="async">
+                    <img src="assets/images/site/linsey-mirror-color.jpg" alt="Spiegeloefening tijdens coaching" class="photo-color" loading="lazy" decoding="async">
                     <div class="faq-visual-text">"Geen vraag is te klein om te stellen"</div>
                 </div>
             </div>
@@ -1977,7 +1928,7 @@
                 <div class="footer-section-title">Snel naar</div>
                 <a href="#aanpak">Werkwijze</a>
                 <a href="#over">Over</a>
-                <a href="#trajecten">In beeld</a>
+                <a href="#trajecten">Traject</a>
                 <a href="#contact">Contact</a>
             </div>
 
