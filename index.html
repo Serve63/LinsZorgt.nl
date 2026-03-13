@@ -551,10 +551,6 @@
             filter: none;
         }
 
-        .hero-image-main img.photo-focus-right {
-            object-position: 42% center;
-        }
-
         .hero-quote {
             font-family: 'Oswald', sans-serif;
             font-size: 1.3rem;
@@ -721,11 +717,29 @@
             font-size: clamp(2rem, 4vw, 3rem);
         }
 
-        .story-header p {
+        .story-copy {
             color: var(--text-secondary);
             max-width: 700px;
             font-size: 1rem;
             line-height: 1.75;
+        }
+
+        .story-copy p + p {
+            margin-top: 0.9rem;
+        }
+
+        .story-copy ul {
+            list-style: none;
+            display: inline-grid;
+            gap: 0.45rem;
+            margin-top: 1rem;
+            text-align: left;
+        }
+
+        .story-copy li::before {
+            content: "•";
+            color: var(--accent);
+            margin-right: 0.55rem;
         }
 
         .story-scroll {
@@ -1673,7 +1687,7 @@
 
         <div class="hero-visual fade-up" style="transition-delay: 0.2s;">
             <div class="hero-image-main">
-                <img src="assets/images/site/linsey-41-color.jpg" alt="Linsey tijdens een portretfoto" class="photo-color photo-focus-right" loading="eager" fetchpriority="high">
+                <img src="assets/images/site/linsey-bag-color.jpg" alt="Bokssessie met bokszakken" class="photo-color" loading="eager" fetchpriority="high">
             </div>
             <div class="hero-image-secondary photo">
                 <img src="assets/images/site/linsey-knee-color.jpg" alt="Bokscoaching in actie" class="photo-color" loading="lazy" decoding="async">
@@ -1753,9 +1767,15 @@
                 <div class="eyebrow">Traject op maat</div>
                 <h2>Na de intake bepalen we samen wat past</h2>
             </div>
-            <p>
-                Geen vaste prijzen op de site. In het intakegesprek kijken we naar jouw hulpvraag, frequentie, locatie en of een korter of langer traject logisch is.
-            </p>
+            <div class="story-copy">
+                <p>Omdat ieder traject anders is, werken we met maatwerk.</p>
+                <p>In het intakegesprek kijken we naar jouw hulpvraag, frequentie, locatie en of een korter of langer traject logisch is. Veel mensen kiezen bijvoorbeeld voor</p>
+                <ul>
+                    <li>5 sessies</li>
+                    <li>10 sessies</li>
+                    <li>20 sessies</li>
+                </ul>
+            </div>
         </div>
 
         <div class="story-scroll">
@@ -1894,7 +1914,7 @@
     <section id="contact" class="final-cta">
         <div class="overlap-container fade-up">
             <div class="overlap-image">
-                <img src="assets/images/site/linsey-bag-color.jpg" alt="Persoonlijke bokscoaching" class="photo-color" loading="lazy" decoding="async">
+                <img src="assets/images/site/linsey-34-color.jpg" alt="Coachingsessie op de grond" class="photo-color" loading="lazy" decoding="async">
             </div>
 
             <div class="overlap-content">
