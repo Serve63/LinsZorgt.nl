@@ -728,15 +728,19 @@
             margin-top: 0.9rem;
         }
 
-        .story-copy ul {
-            list-style: none;
-            display: inline-grid;
-            gap: 0.45rem;
-            margin-top: 1rem;
-            text-align: left;
+        .story-inline-list {
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+            margin-left: 0.35rem;
+            vertical-align: baseline;
         }
 
-        .story-copy li::before {
+        .story-inline-list span {
+            white-space: nowrap;
+        }
+
+        .story-inline-list span::before {
             content: "•";
             color: var(--accent);
             margin-right: 0.55rem;
@@ -1769,12 +1773,7 @@
             </div>
             <div class="story-copy">
                 <p>Omdat ieder traject anders is, werken we met maatwerk.</p>
-                <p>In het intakegesprek kijken we naar jouw hulpvraag, frequentie, locatie en of een korter of langer traject logisch is. Veel mensen kiezen bijvoorbeeld voor</p>
-                <ul>
-                    <li>5 sessies</li>
-                    <li>10 sessies</li>
-                    <li>20 sessies</li>
-                </ul>
+                <p>In het intakegesprek kijken we naar jouw hulpvraag, frequentie, locatie en of een korter of langer traject logisch is. Veel mensen kiezen bijvoorbeeld voor <span class="story-inline-list"><span>5 sessies</span><span>10 sessies</span><span>20 sessies</span></span></p>
             </div>
         </div>
 
