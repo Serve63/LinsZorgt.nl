@@ -488,9 +488,11 @@
 
         .hero-visual {
             position: relative;
-            height: 80vh;
             display: grid;
             grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+            grid-template-rows: repeat(2, minmax(0, 1fr));
+            height: auto;
+            aspect-ratio: 13 / 10;
             gap: 1rem;
         }
 
@@ -573,8 +575,8 @@
         }
 
         .hero-image-main img.photo-focus-left {
-            object-fit: contain;
-            object-position: center center;
+            object-fit: cover;
+            object-position: right center;
         }
 
         .hero-quote {
@@ -1644,8 +1646,8 @@
                 border-radius: 16px;
             }
             .hero-image-main img.photo-focus-left {
-                object-fit: contain;
-                object-position: center center;
+                object-fit: cover;
+                object-position: right center;
             }
             .hero-quote { font-size: 1.05rem; margin-bottom: 0.75rem; }
             .hero-quote-author { font-size: 0.72rem; }
