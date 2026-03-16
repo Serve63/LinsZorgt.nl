@@ -490,7 +490,7 @@
             position: relative;
             height: 80vh;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
             gap: 1rem;
         }
 
@@ -572,7 +572,7 @@
         }
 
         .hero-image-main img.photo-focus-left {
-            object-position: 12% center;
+            object-position: 88% center;
         }
 
         .hero-quote {
@@ -1641,6 +1641,7 @@
                 padding: 1.2rem;
                 border-radius: 16px;
             }
+            .hero-image-main img.photo-focus-left { object-position: 84% center; }
             .hero-quote { font-size: 1.05rem; margin-bottom: 0.75rem; }
             .hero-quote-author { font-size: 0.72rem; }
 
@@ -1799,11 +1800,10 @@
                 grid-template-columns: 1fr;
                 grid-template-areas:
                     "main"
-                    "quote"
-                    "photo";
+                    "quote";
             }
             .hero-image-main { aspect-ratio: 4 / 5.15; }
-            .hero-image-secondary.photo { aspect-ratio: 4 / 4.7; }
+            .hero-image-secondary.photo { display: none; }
             .hero-image-secondary { padding: 1rem; }
 
             .approach-card { padding: 1.6rem; }
