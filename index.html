@@ -545,6 +545,20 @@ html{background-color:#0a0a0a}
 }
 @media (max-width:640px){.footer-links{display:none!important}}
 @media (max-width:1024px){.hero.ho-1{padding-bottom:2.5rem}}
+
+/* Mobiel: geen hamburgermenu (06-11) */
+@media (max-width:760px){.nav-toggle,.nav-drawer{display:none!important}}
+/* Vaste knop onderin op telefoon, zoals bij Salon TOF (06-11) */
+.vaste-balk{display:none}
+@media (max-width:760px) and (min-height:501px){
+  .vaste-balk.zichtbaar{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:1500;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(12,12,12,.96);border-top:1px solid rgba(255,255,255,.1);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);animation:balk-in .2s ease}
+  .vaste-balk a{display:flex;align-items:center;justify-content:center;min-height:52px;text-decoration:none;font-weight:600;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase}
+  .vaste-balk .vb-start{flex:1;background:var(--accent);color:#fff}
+  .vaste-balk .vb-bel{width:56px;flex:none;border:1px solid rgba(255,255,255,.28);color:var(--text-primary)}
+  .vaste-balk .vb-bel svg{width:22px;height:22px}
+  body.heeft-vaste-balk footer{padding-bottom:calc(6rem + env(safe-area-inset-bottom))}
+}
+@keyframes balk-in{from{transform:translate3d(0,100%,0)}to{transform:translate3d(0,0,0)}}
 </style>
     
     
@@ -865,6 +879,10 @@ html{background-color:#0a0a0a}
         </div>
     </footer>
 
+    <div class="vaste-balk" aria-label="Snel contact">
+        <a class="vb-start" href="#contact">Start direct</a>
+        <a class="vb-bel" href="tel:+31648551774" aria-label="Bel LinsZorgT: 06-48551774"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></a>
+    </div>
     <script>
         // Scroll animations
         const revealElements = document.querySelectorAll('.fade-up');
@@ -924,6 +942,22 @@ html{background-color:#0a0a0a}
             window.addEventListener('resize', () => {
                 if (window.matchMedia('(min-width: 769px)').matches) closeNav();
             });
+        }
+
+        // Vaste knop onderin op telefoon: pas tonen als de knoppen in de hero voorbij zijn
+        const vasteBalk = document.querySelector('.vaste-balk');
+        const heroKnoppen = document.querySelector('.hero .hero-actions');
+        if (vasteBalk) {
+            document.body.classList.add('heeft-vaste-balk');
+            let balkFrame = null;
+            const zetBalk = () => {
+                balkFrame = null;
+                const grens = heroKnoppen ? heroKnoppen.getBoundingClientRect().bottom + window.scrollY : 160;
+                vasteBalk.classList.toggle('zichtbaar', window.scrollY > Math.max(grens - 40, 80));
+            };
+            window.addEventListener('scroll', () => { if (balkFrame === null) balkFrame = requestAnimationFrame(zetBalk); }, { passive: true });
+            window.addEventListener('resize', zetBalk);
+            zetBalk();
         }
 
         // FAQ accordion
