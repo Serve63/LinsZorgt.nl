@@ -1,0 +1,462 @@
+/* Alleen voor lokaal kiezen: varianten voor "Over mij" en "Traject op maat". */
+
+/* Balk met drie groepen */
+.ho-balk--groepen a { padding: .65rem .8rem; min-width: 2.2rem; text-align: center; }
+.ho-balk--groepen .ho-balk-scheiding:first-child { border-left: 0; margin-left: 0; padding-left: .7rem; }
+
+/* ===== Over mij ===== */
+#over.ov .about-image, #over.ov .about-content { border-radius: 0; }
+#over.ov .about-feature { border-radius: 0; }
+
+/* 1. Volle foto: foto tot de rand, tekst ernaast zonder kader */
+#over.ov-1 { max-width: none; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); padding-left: 0 !important; gap: 4.5rem; }
+#over.ov-1 .about-image { height: min(80svh, 44rem); }
+#over.ov-1 .about-content { margin: 0; padding: 0; background: none; border: 0; max-width: 36rem; }
+#over.ov-1 .about-features { gap: 0; border-top: 1px solid rgba(255,255,255,.14); }
+#over.ov-1 .about-feature { padding: 1.1rem 0; border-bottom: 1px solid rgba(255,255,255,.14); }
+#over.ov-1 .about-feature:nth-child(odd) { padding-right: 1rem; border-right: 1px solid rgba(255,255,255,.14); }
+#over.ov-1 .about-feature:nth-child(even) { padding-left: 1.4rem; }
+
+/* 2. Groot citaat: eerste zin als grote uitspraak */
+#over.ov-2 .about-content { border-top: 4px solid var(--accent); }
+#over.ov-2 .about-content > p:first-of-type { font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 700; font-size: clamp(1.5rem, 2.2vw, 2rem); line-height: 1.15; color: var(--text-primary); }
+#over.ov-2 .about-content > p:first-of-type::before { content: '“'; display: block; font-size: 4rem; line-height: .6; color: var(--accent); margin-bottom: .4rem; }
+#over.ov-2 .about-feature-value { font-size: 1.7rem; }
+
+/* 3. Naam groot over de foto */
+#over.ov-3 .about-image-wrap { position: relative; }
+#over.ov-3 .about-image-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(10,10,10,.85), rgba(10,10,10,0) 50%); pointer-events: none; }
+#over.ov-3 .ov-naam { position: absolute; left: 2rem; bottom: 1.6rem; z-index: 2; font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800;
+    font-size: clamp(3.2rem, 6.5vw, 6.5rem); line-height: .86; text-transform: uppercase; color: var(--text-primary); }
+#over.ov-3 .about-content h2 { display: none; }
+#over.ov-3 .about-content { border-left: 4px solid var(--accent); }
+
+/* 4. Roze schaduw: hard verschoven kader */
+#over.ov-4 .about-image-wrap { box-shadow: -14px 14px 0 var(--accent); }
+#over.ov-4 .about-content { box-shadow: 14px 14px 0 #2a1d1b; border: 2px solid var(--accent); }
+#over.ov-4 .about-feature-value { font-size: 1.7rem; }
+
+/* 5. Balk eronder: kenmerken als volle strook onder foto en tekst */
+#over.ov-5 { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); row-gap: 0; }
+#over.ov-5 .about-image { height: 34rem; }
+#over.ov-5 .about-content { margin-left: 0; height: 34rem; display: flex; flex-direction: column; justify-content: center; border-left: 0; }
+#over.ov-5 > .about-features { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin: 0;
+    background: var(--accent); }
+#over.ov-5 > .about-features .about-feature { padding: 1.5rem 1.8rem; border: 0; border-left: 1px solid rgba(20,16,16,.2); background: none; }
+#over.ov-5 > .about-features .about-feature:first-child { border-left: 0; }
+#over.ov-5 > .about-features .about-feature-value { color: #141010; font-size: 1.8rem; }
+#over.ov-5 > .about-features .about-feature-label { color: rgba(20,16,16,.8); }
+
+/* ===== Traject op maat ===== */
+#trajecten.tr .story-card { border-radius: 0; }
+#trajecten.tr .story-card:hover { transform: none; }
+#trajecten.tr .story-step { display: flex; align-items: center; gap: .7rem; }
+#trajecten.tr .story-step b { font-weight: 400; }
+#trajecten.tr .story-step em { font-style: normal; }
+#trajecten.tr .story-card h3 { font-size: 1.6rem; line-height: 1.05; }
+
+/* 1. Tijdlijn: stappen verbonden met een lijn */
+#trajecten.tr-1 .story-scroll { position: relative; gap: 2rem; padding-top: 3rem; overflow: visible; }
+#trajecten.tr-1 .story-scroll::before { content: ''; position: absolute; left: 0; right: 0; top: 4.6rem; height: 2px; background: linear-gradient(90deg, var(--accent), rgba(209,124,115,.15)); }
+#trajecten.tr-1 .story-card { background: none; border: 0; flex: 1 1 0; }
+#trajecten.tr-1 .story-body { padding: 0; }
+#trajecten.tr-1 .story-step { flex-direction: column; align-items: flex-start; gap: 1.2rem; }
+#trajecten.tr-1 .story-step b { position: relative; z-index: 1; display: grid; place-items: center; width: 3.3rem; height: 3.3rem; background: var(--accent); color: #141010;
+    font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; font-size: 1.5rem; letter-spacing: 0; }
+#trajecten.tr-1 .story-step em { color: var(--accent); }
+
+/* 2. Rondes: schuin label, roze streep links */
+#trajecten.tr-2 .story-card { background: #151515; border: 0; border-left: 3px solid var(--accent); flex: 1 1 0; }
+#trajecten.tr-2 .story-step { flex-direction: column; align-items: flex-start; gap: .9rem; }
+#trajecten.tr-2 .story-step b { display: inline-flex; align-items: baseline; gap: .4rem; background: var(--accent); color: #141010; padding: .45rem 1rem .4rem; transform: skewX(-12deg);
+    font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; font-size: 1.5rem; letter-spacing: 0; line-height: 1; }
+#trajecten.tr-2 .story-step b span { font-size: .95rem; letter-spacing: .1em; }
+#trajecten.tr-2 .story-body { padding: 2.2rem 2rem 2.4rem; }
+
+/* 3. Rijen: zoals een trainingsschema */
+#trajecten.tr-3 .story-scroll { flex-direction: column; gap: 0; max-width: 1100px; border-top: 1px solid rgba(255,255,255,.14); padding: 0; overflow: visible; }
+#trajecten.tr-3 .story-card { flex: none; background: none; border: 0; border-bottom: 1px solid rgba(255,255,255,.14); }
+#trajecten.tr-3 .story-body { display: grid; grid-template-columns: 7rem minmax(0, 20rem) minmax(0, 1fr); gap: .3rem 2.5rem; align-items: center; padding: 2rem 0; }
+#trajecten.tr-3 .story-step { grid-row: 1 / 3; flex-direction: column; align-items: flex-start; gap: .4rem; }
+#trajecten.tr-3 .story-step b { font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; font-size: 4.2rem; line-height: .9; letter-spacing: 0; color: transparent; -webkit-text-stroke: 1.5px var(--accent); }
+#trajecten.tr-3 .story-step em { font-size: .68rem; }
+#trajecten.tr-3 .story-card h3 { grid-column: 2; grid-row: 1 / 3; }
+#trajecten.tr-3 .story-card p { grid-column: 3; grid-row: 1 / 3; }
+
+/* 4. Sessies groot: 5 / 10 / 20 als stoere tegels */
+#trajecten.tr-4 .story-inline-list { display: none; }
+#trajecten.tr-4 .tr-tegels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 900px; margin: -1rem auto 2.5rem; border: 1px solid rgba(255,255,255,.14); }
+#trajecten.tr-4 .tr-tegels div { display: flex; align-items: baseline; justify-content: center; gap: .6rem; padding: 1.4rem 1rem; border-left: 1px solid rgba(255,255,255,.14); }
+#trajecten.tr-4 .tr-tegels div:first-child { border-left: 0; }
+#trajecten.tr-4 .tr-tegels div:nth-child(2) { background: var(--accent); }
+#trajecten.tr-4 .tr-tegels div:nth-child(2) b, #trajecten.tr-4 .tr-tegels div:nth-child(2) span { color: #141010; -webkit-text-stroke: 0; }
+#trajecten.tr-4 .tr-tegels b { font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; font-size: 3.6rem; line-height: .9; color: var(--text-primary); }
+#trajecten.tr-4 .tr-tegels span { font-size: .78rem; text-transform: uppercase; letter-spacing: .14em; color: var(--text-secondary); }
+#trajecten.tr-4 .story-card { background: #141414; flex: 1 1 0; }
+#trajecten.tr-4 .story-step b { color: var(--accent); }
+
+/* 5. Roze start: eerste stap in roze, dikke streep bovenop */
+#trajecten.tr-5 .story-scroll { gap: 0; }
+#trajecten.tr-5 .story-card { flex: 1 1 0; background: #141414; border: 1px solid rgba(255,255,255,.1); border-top: 4px solid rgba(255,255,255,.18); }
+#trajecten.tr-5 .story-card:first-child { background: var(--accent); border-color: var(--accent); }
+#trajecten.tr-5 .story-card:first-child h3 { color: #141010; }
+#trajecten.tr-5 .story-card:first-child p, #trajecten.tr-5 .story-card:first-child .story-step { color: rgba(20,16,16,.8); }
+#trajecten.tr-5 .story-body { padding: 2.4rem 2rem 2.6rem; }
+#trajecten.tr-5 .story-step b { font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; font-size: 2.6rem; line-height: .9; letter-spacing: 0; }
+
+/* Tablet */
+@media (max-width: 1024px) {
+    #over.ov-1 { padding-left: var(--page-gutter) !important; gap: 2rem; }
+    #over.ov-1 .about-image { height: 26rem; }
+    #over.ov-5 .about-image, #over.ov-5 .about-content { height: auto; }
+    #over.ov-5 .about-image { height: 26rem; }
+    #over.ov-5 .about-content { margin-top: 0 !important; }
+    #over.ov-5 > .about-features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    #over.ov-5 > .about-features .about-feature:nth-child(3) { border-left: 0; }
+    #over.ov-4 .about-image-wrap { box-shadow: -10px 10px 0 var(--accent); }
+    #trajecten.tr-1 .story-scroll::before { display: none; }
+    #trajecten.tr-1 .story-card, #trajecten.tr-2 .story-card, #trajecten.tr-4 .story-card, #trajecten.tr-5 .story-card { flex: 1 1 auto; }
+    #trajecten.tr-3 .story-body { grid-template-columns: 6rem minmax(0, 1fr); }
+    #trajecten.tr-3 .story-card h3 { grid-column: 2; grid-row: 1; }
+    #trajecten.tr-3 .story-card p { grid-column: 2; grid-row: 2; }
+    #trajecten.tr-5 .story-scroll { gap: 0; }
+}
+
+/* Telefoon */
+@media (max-width: 640px) {
+    #over.ov .about-image { border-radius: 0; }
+    #over.ov .about-content { border-radius: 0; }
+    #over.ov-1 .about-image { height: 22rem; }
+    #over.ov-1 .about-features { grid-template-columns: 1fr 1fr; }
+    #over.ov-3 .ov-naam { left: 1.2rem; bottom: 1rem; font-size: 3.2rem; }
+    #over.ov-3 .about-content h2 { display: block; }
+    #over.ov-4 .about-image-wrap { box-shadow: -8px 8px 0 var(--accent); margin-left: 8px; }
+    #over.ov-4 .about-content { box-shadow: 8px 8px 0 #2a1d1b; margin-right: 8px !important; }
+    #over.ov-5 > .about-features .about-feature { padding: 1.1rem 1rem; }
+    #over.ov-5 > .about-features .about-feature-value { font-size: 1.4rem; }
+    #trajecten.tr-1 .story-scroll { padding-top: 1.5rem; gap: 2.2rem; }
+    #trajecten.tr-3 .story-body { grid-template-columns: 1fr; padding: 1.6rem 0; }
+    #trajecten.tr-3 .story-step { grid-row: auto; }
+    #trajecten.tr-3 .story-card h3, #trajecten.tr-3 .story-card p { grid-column: 1; grid-row: auto; }
+    #trajecten.tr-3 .story-step b { font-size: 3.2rem; }
+    #trajecten.tr-4 .tr-tegels { margin-top: 0; }
+    #trajecten.tr-4 .tr-tegels div { flex-direction: column; align-items: center; gap: .3rem; padding: 1rem .5rem; }
+    #trajecten.tr-4 .tr-tegels b { font-size: 2.6rem; }
+    #trajecten.tr-4 .tr-tegels span { font-size: .62rem; letter-spacing: .08em; }
+    .ho-balk--groepen { border-radius: 14px; }
+}
+#over.ov-2 .about-content > p:first-of-type::before { font-family: Georgia, 'Times New Roman', serif; font-style: normal; font-weight: 700; font-size: 4.5rem; line-height: .7; }
+@media (max-width: 1024px) {
+    #over.ov-1, #over.ov-5 { grid-template-columns: 1fr; }
+    #over.ov-5 > .about-features { grid-column: 1; }
+}
+@media (max-width: 640px) { #over.ov-3 .about-content h2 { display: none; } }
+
+/* Balk mag over twee regels */
+.ho-balk--groepen { flex-wrap: wrap; justify-content: center; max-width: min(1100px, calc(100vw - 24px)); border-radius: 18px; row-gap: .2rem; }
+
+/* ===== Vragen ===== */
+#faq.fq .faq-item, #faq.fq .faq-visual, #faq.fq .question-wrap { border-radius: 0; }
+#faq.fq .faq-item:hover { transform: none; }
+#faq.fq .faq-icon { border-radius: 0; }
+#faq.fq .faq-num { font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; }
+
+/* 1. Rijen: geen kaders, lijnen ertussen, grote omlijnde cijfers */
+#faq.fq-1 .faq-list { gap: 0; border-top: 1px solid rgba(255,255,255,.14); }
+#faq.fq-1 .faq-item { background: none; border: 0; border-bottom: 1px solid rgba(255,255,255,.14); }
+#faq.fq-1 .faq-item.active { background: none; }
+#faq.fq-1 .faq-question { padding-left: 0; padding-right: 0; align-items: center; }
+#faq.fq-1 .faq-num { opacity: 1; font-size: 2.4rem; line-height: 1; min-width: 3.4rem; color: transparent; -webkit-text-stroke: 1.2px var(--accent); }
+#faq.fq-1 .faq-item.active .faq-num { color: var(--accent); }
+#faq.fq-1 .faq-answer { padding-left: calc(3.4rem + 1.5rem); }
+#faq.fq-1 .question-wrap { margin-top: 2rem; }
+
+/* 2. Roze open: open vraag kleurt roze, streep links */
+#faq.fq-2 .faq-item { background: #141414; border: 0; border-left: 3px solid rgba(255,255,255,.12); }
+#faq.fq-2 .faq-item:hover { border-left-color: var(--accent); }
+#faq.fq-2 .faq-item.active { background: var(--accent); border-left-color: var(--accent); }
+#faq.fq-2 .faq-item.active .faq-text, #faq.fq-2 .faq-item.active .faq-num { color: #141010; opacity: 1; }
+#faq.fq-2 .faq-item.active .faq-answer { color: rgba(20,16,16,.85); }
+#faq.fq-2 .faq-item.active .faq-icon { background: #141010; border-color: #141010; color: var(--accent); }
+#faq.fq-2 .faq-num { opacity: .8; font-size: 1.5rem; }
+
+/* 3. Nummerblok: cijfer in een roze vlak */
+#faq.fq-3 .faq-item { background: #141414; border-color: rgba(255,255,255,.1); }
+#faq.fq-3 .faq-question { align-items: stretch; padding-top: 0; padding-bottom: 0; padding-left: 0; }
+#faq.fq-3 .faq-num { display: grid; place-items: center; margin: 0 1.2rem 0 0; min-width: 4.2rem; background: var(--accent); color: #141010; opacity: 1; font-size: 1.7rem; }
+#faq.fq-3 .faq-text { padding: 1.5rem 0; align-self: center; }
+#faq.fq-3 .faq-icon { align-self: center; }
+#faq.fq-3 .faq-item.active { border-color: var(--accent); }
+#faq.fq-3 .faq-answer { padding-left: calc(4.2rem + 1.2rem); }
+
+/* 4. Grote foto: foto loopt de hele kolom, uitspraak groot erop */
+#faq.fq-4 .faq-visual { height: 30rem; border: 0; }
+#faq.fq-4 .faq-visual img { opacity: 1; filter: brightness(.7); }
+#faq.fq-4 .faq-visual::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(0deg, rgba(10,10,10,.85), rgba(10,10,10,0) 55%); }
+#faq.fq-4 .faq-visual-text { z-index: 2; font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; font-size: 2.3rem; line-height: 1; text-transform: uppercase; border-left: 4px solid var(--accent); padding-left: 1rem; }
+#faq.fq-4 .faq-item { background: #141414; border: 0; border-top: 3px solid rgba(255,255,255,.1); }
+#faq.fq-4 .faq-item.active { border-top-color: var(--accent); background: #181414; }
+#faq.fq-4 .faq-num { opacity: 1; }
+
+/* 5. Volle breedte: kop gecentreerd, vragen in twee kolommen */
+#faq.fq-5 .faq-wrapper { grid-template-columns: 1fr; gap: 3rem; max-width: 1200px; }
+#faq.fq-5 .faq-header { position: static; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 4rem; align-items: end; }
+#faq.fq-5 .faq-header .eyebrow, #faq.fq-5 .faq-header h2, #faq.fq-5 .faq-header > p { grid-column: 1; }
+#faq.fq-5 .faq-visual { grid-column: 2; grid-row: 1 / 4; height: 100%; min-height: 18rem; }
+#faq.fq-5 .faq-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; align-items: start; }
+#faq.fq-5 .faq-item { background: #141414; border: 0; border-top: 3px solid var(--accent); }
+#faq.fq-5 .faq-num { opacity: 1; font-size: 1.6rem; }
+#faq.fq-5 .question-wrap { grid-column: 1 / -1; }
+
+/* ===== Contact ===== */
+#contact.ct .overlap-container, #contact.ct .overlap-image, #contact.ct .contact-option { border-radius: 0; }
+#contact.ct .overlap-title { font-size: clamp(2.6rem, 5vw, 4.2rem); }
+
+/* 1. Volle foto: foto als achtergrond, alles eroverheen */
+#contact.ct-1 { max-width: none; padding: 0; margin: 2rem 0 0; }
+#contact.ct-1 .overlap-container { border: 0; padding: 7rem var(--page-gutter); min-height: 34rem; background: none; display: flex; align-items: center; }
+#contact.ct-1 .overlap-image { position: absolute; inset: 0; width: 100%; height: 100%; transform: none; right: 0; top: 0; }
+#contact.ct-1 .overlap-image img { mask-image: none; -webkit-mask-image: none; filter: brightness(.55); object-position: 50% 35%; }
+#contact.ct-1 .overlap-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,10,10,.95) 0%, rgba(10,10,10,.75) 45%, rgba(10,10,10,.1) 100%); }
+#contact.ct-1 .overlap-content { max-width: 34rem; }
+#contact.ct-1 .contact-option { background: rgba(10,10,10,.6); }
+
+/* 2. Gesplitst strak: foto rechts tot de rand */
+#contact.ct-2 { max-width: none; padding: 0; margin: 2rem 0 0; }
+#contact.ct-2 .overlap-container { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); padding: 0; border: 0; border-top: 1px solid rgba(255,255,255,.1); background: #121212; }
+#contact.ct-2 .overlap-content { order: -1; max-width: none; padding: 5.5rem var(--page-gutter); }
+#contact.ct-2 .overlap-image { position: relative; inset: auto; right: auto; top: auto; width: 100%; height: 100%; min-height: 32rem; transform: none; }
+#contact.ct-2 .overlap-image img { mask-image: none; -webkit-mask-image: none; filter: none; }
+#contact.ct-2 .contact-bar { border-top: 0; padding-top: 0; gap: .8rem; }
+#contact.ct-2 .contact-option { border: 1px solid rgba(255,255,255,.14); }
+
+/* 3. Roze blok: het hele vlak in de accentkleur */
+#contact.ct-3 .overlap-container { background: var(--accent); border: 0; }
+#contact.ct-3 .overlap-label, #contact.ct-3 .overlap-title, #contact.ct-3 .overlap-title span { color: #141010; }
+#contact.ct-3 .overlap-label::before { background: #141010; }
+#contact.ct-3 .overlap-title span { color: transparent; -webkit-text-stroke: 1.6px #141010; }
+#contact.ct-3 .overlap-text { color: rgba(20,16,16,.82); }
+#contact.ct-3 .contact-bar { border-top-color: rgba(20,16,16,.2); }
+#contact.ct-3 .contact-bar .contact-option { background: #141010; }
+#contact.ct-3 .contact-option::before { background: #141010; }
+#contact.ct-3 .overlap-image img { mask-image: none; -webkit-mask-image: none; filter: none; }
+#contact.ct-3 .overlap-image { box-shadow: 0 30px 60px rgba(0,0,0,.35); }
+
+/* 4. Grote kop: kop over de volle breedte, contact als grote knoppen */
+#contact.ct-4 { max-width: 1200px; }
+#contact.ct-4 .overlap-container { padding: 4rem; border: 0; border-top: 4px solid var(--accent); background: #121212; min-height: 0; }
+#contact.ct-4 .overlap-image { position: absolute; right: 4rem; top: 4rem; width: 13rem; height: 16rem; transform: none; }
+#contact.ct-4 .overlap-image img { mask-image: none; -webkit-mask-image: none; filter: none; }
+#contact.ct-4 .overlap-content { max-width: none; }
+#contact.ct-4 .overlap-title { font-size: clamp(3rem, 7.5vw, 6.5rem); line-height: .9; max-width: 12ch; text-transform: uppercase; }
+#contact.ct-4 .overlap-text { max-width: 34rem; }
+#contact.ct-4 .contact-bar { border-top: 0; padding-top: 0; gap: 1rem; }
+#contact.ct-4 .contact-option { padding: 1.8rem 2rem; background: var(--accent) !important; }
+#contact.ct-4 .contact-option::before { display: none; }
+#contact.ct-4 .contact-label { color: rgba(20,16,16,.7); }
+#contact.ct-4 .contact-value { color: #141010; font-size: 1.5rem; font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; }
+
+/* 5. Harde schaduw: verschoven roze vlak achter het kader */
+#contact.ct-5 .overlap-container { border: 2px solid var(--accent); box-shadow: 16px 16px 0 var(--accent); background: #121212; }
+#contact.ct-5 .overlap-image { border: 2px solid var(--accent); }
+#contact.ct-5 .overlap-image img { mask-image: none; -webkit-mask-image: none; filter: none; }
+
+/* Tablet */
+@media (max-width: 1024px) {
+    #faq.fq-5 .faq-header { grid-template-columns: 1fr; }
+    #faq.fq-5 .faq-visual { grid-column: 1; grid-row: auto; height: 16rem; }
+    #faq.fq-5 .faq-list { grid-template-columns: 1fr; }
+    #faq.fq-4 .faq-visual { height: 22rem; }
+    #contact.ct-1 .overlap-container { padding: 5rem var(--page-gutter); }
+    #contact.ct-1 .overlap-image::after { background: linear-gradient(0deg, rgba(10,10,10,.95) 0%, rgba(10,10,10,.75) 55%, rgba(10,10,10,.3) 100%); }
+    #contact.ct-2 .overlap-container { grid-template-columns: 1fr; }
+    #contact.ct-2 .overlap-content { padding: 3.5rem var(--page-gutter); }
+    #contact.ct-2 .overlap-image { min-height: 22rem; }
+    #contact.ct-4 .overlap-image { position: relative; right: auto; top: auto; width: 100%; height: 16rem; margin-bottom: 1.5rem; }
+    #contact.ct-4 .overlap-container { padding: 2.5rem 2rem; }
+}
+
+/* Telefoon */
+@media (max-width: 640px) {
+    #faq.fq-1 .faq-num { font-size: 1.8rem; min-width: 2.6rem; }
+    #faq.fq-1 .faq-answer { padding-left: 0; }
+    #faq.fq-3 .faq-num { min-width: 3.2rem; font-size: 1.3rem; margin-right: .9rem; }
+    #faq.fq-3 .faq-text { padding: 1.1rem 0; }
+    #faq.fq-3 .faq-answer { padding-left: 1rem; }
+    #faq.fq-4 .faq-visual-text { font-size: 1.6rem; }
+    #faq.fq .faq-item, #faq.fq .faq-visual { border-radius: 0; }
+    #contact.ct .overlap-container { border-radius: 0; }
+    #contact.ct-1 .overlap-container { padding: 4rem 1.25rem; min-height: 30rem; align-items: flex-end; }
+    #contact.ct-2 .overlap-content { padding: 3rem 1.25rem; }
+    #contact.ct-4 .overlap-container { padding: 1.6rem 1.25rem; }
+    #contact.ct-4 .contact-value { font-size: 1.3rem; }
+    #contact.ct-5 .overlap-container { box-shadow: 8px 8px 0 var(--accent); margin-right: 8px; }
+}
+#contact.ct-1 .overlap-image { z-index: 0; }
+#contact.ct-1 .overlap-content { position: relative; z-index: 2; }
+#contact.ct-1 .overlap-image img { filter: brightness(.75); }
+
+/* Vragen-icoon: vak blijft recht, alleen het plusje draait naar een kruisje */
+#faq.fq .faq-item.active .faq-icon { transform: none; }
+#faq.fq .faq-icon { font-size: 0; flex: none; }
+#faq.fq .faq-icon::before { content: '+'; display: block; font-size: 1.1rem; line-height: 1; transition: transform .3s var(--ease-out-expo); }
+#faq.fq .faq-item.active .faq-icon::before { transform: rotate(45deg); }
+
+/* "Klaar om te bewegen?" op één regel */
+#contact.ct-1 .overlap-content { max-width: 48rem; }
+#contact.ct-1 .overlap-text { max-width: 34rem; }
+#contact.ct-1 .contact-bar { max-width: 34rem; }
+#contact.ct .overlap-title { white-space: nowrap; font-size: clamp(1.7rem, 8.2vw, 4.2rem); }
+
+/* ===== Intake-tekst en 5/10/20 sessies ===== */
+#trajecten.ss .ss-label { font-size: .72rem; text-transform: uppercase; letter-spacing: .16em; color: var(--accent); margin-bottom: .9rem; }
+#trajecten.ss .ss-tegels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid rgba(255,255,255,.14); }
+#trajecten.ss .ss-tegels div { display: flex; align-items: baseline; justify-content: center; gap: .5rem; padding: 1.2rem .8rem; border-left: 1px solid rgba(255,255,255,.14); }
+#trajecten.ss .ss-tegels div:first-child { border-left: 0; }
+#trajecten.ss .ss-tegels b, #trajecten.ss .ss-rij b, #trajecten.ss .ss-cijfers b { font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; line-height: .9; }
+#trajecten.ss .ss-tegels b { font-size: 3.2rem; color: var(--text-primary); }
+#trajecten.ss .ss-tegels span, #trajecten.ss .ss-rij span, #trajecten.ss .ss-cijfers span { font-size: .72rem; text-transform: uppercase; letter-spacing: .14em; color: var(--text-secondary); }
+
+/* 1. Tegels naast tekst: kop links, intake + tegels rechts */
+#trajecten.ss-1 .story-header { max-width: 1100px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.5rem 4rem; align-items: end; text-align: left; }
+#trajecten.ss-1 .story-header .eyebrow { justify-content: flex-start; }
+#trajecten.ss-1 .ss-blok { grid-column: 2; grid-row: 1 / 3; }
+#trajecten.ss-1 .ss-blok p { color: var(--text-secondary); line-height: 1.75; margin-bottom: 1.6rem; }
+#trajecten.ss-1 .ss-tegels div:nth-child(2) { background: var(--accent); }
+#trajecten.ss-1 .ss-tegels div:nth-child(2) b, #trajecten.ss-1 .ss-tegels div:nth-child(2) span { color: #141010; }
+
+/* 2. In stap 02: sessies als labels bij "Sessies op maat" */
+#trajecten.ss-2 .ss-chips { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-top: .4rem; }
+#trajecten.tr-3.ss-2 .ss-chips { grid-column: 3; grid-row: 3; }
+#trajecten.ss-2 .ss-chips span { font-size: .7rem; text-transform: uppercase; letter-spacing: .14em; color: var(--text-tertiary); margin-right: .3rem; }
+#trajecten.ss-2 .ss-chips em { font-style: normal; font-size: .82rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: #141010; background: var(--accent); padding: .45rem .8rem; transform: skewX(-10deg); }
+
+/* 3. Roze balk eronder: apart blok over de volle breedte */
+#trajecten.ss-3 .ss-band { max-width: 1100px; margin: 3rem auto 0; display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 2.5rem; background: var(--accent); padding: 1.6rem 2.2rem; }
+#trajecten.ss-3 .ss-band .ss-label { color: #141010; margin: 0; font-weight: 600; max-width: 14rem; line-height: 1.5; }
+#trajecten.ss-3 .ss-band .ss-tegels { border-color: rgba(20,16,16,.25); }
+#trajecten.ss-3 .ss-band .ss-tegels div { border-left-color: rgba(20,16,16,.25); }
+#trajecten.ss-3 .ss-band .ss-tegels b, #trajecten.ss-3 .ss-band .ss-tegels span { color: #141010; }
+
+/* 4. Kaart ernaast: kop links, kaart met de keuzes rechts */
+#trajecten.ss-4 .story-header { max-width: 1100px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 1.2rem 4rem; align-items: start; text-align: left; }
+#trajecten.ss-4 .story-header .eyebrow { justify-content: flex-start; }
+#trajecten.ss-4 .ss-kaart { grid-column: 2; grid-row: 1 / 3; background: #151515; border-top: 4px solid var(--accent); padding: 1.8rem 2rem; }
+#trajecten.ss-4 .ss-rij { display: flex; align-items: baseline; gap: .7rem; padding: .7rem 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+#trajecten.ss-4 .ss-rij b { font-size: 2.6rem; color: var(--accent); min-width: 3.2rem; }
+#trajecten.ss-4 .ss-kaart p { margin-top: 1.2rem; color: var(--text-secondary); font-size: .9rem; line-height: 1.7; }
+
+/* 5. Grote cijfers: 5 / 10 / 20 als stoere regel onder de kop */
+#trajecten.ss-5 .ss-groot { display: flex; flex-direction: column; align-items: center; margin-top: .5rem; }
+#trajecten.ss-5 .ss-cijfers { display: flex; align-items: baseline; gap: 1.2rem; flex-wrap: wrap; justify-content: center; }
+#trajecten.ss-5 .ss-cijfers b { font-size: clamp(3.6rem, 8vw, 6.5rem); color: transparent; -webkit-text-stroke: 1.6px var(--accent); }
+#trajecten.ss-5 .ss-cijfers b:nth-of-type(2) { color: var(--accent); }
+#trajecten.ss-5 .ss-cijfers i { font-style: normal; font-size: clamp(2rem, 4vw, 3.2rem); color: rgba(255,255,255,.2); }
+#trajecten.ss-5 .ss-cijfers span { font-size: .85rem; align-self: center; }
+
+@media (max-width: 1024px) {
+    #trajecten.ss-1 .story-header, #trajecten.ss-4 .story-header { grid-template-columns: 1fr; }
+    #trajecten.ss-1 .ss-blok, #trajecten.ss-4 .ss-kaart { grid-column: 1; grid-row: auto; }
+    #trajecten.tr-3.ss-2 .ss-chips { grid-column: 2; grid-row: 3; }
+    #trajecten.ss-3 .ss-band { grid-template-columns: 1fr; gap: 1rem; }
+}
+@media (max-width: 640px) {
+    #trajecten.ss-1 .story-header, #trajecten.ss-4 .story-header { text-align: left; }
+    #trajecten.ss .ss-tegels b { font-size: 2.4rem; }
+    #trajecten.ss .ss-tegels div { flex-direction: column; align-items: center; gap: .2rem; padding: 1rem .4rem; }
+    #trajecten.tr-3.ss-2 .ss-chips { grid-column: 1; grid-row: auto; }
+    #trajecten.ss-3 .ss-band { padding: 1.4rem 1.1rem; }
+    #trajecten.ss-4 .ss-kaart { padding: 1.4rem 1.2rem; }
+    #trajecten.ss-5 .ss-cijfers { gap: .6rem; }
+}
+#trajecten.ss-4 .story-header { grid-template-rows: auto 1fr; } #trajecten.ss-4 .story-copy { align-self: start; }
+
+@media (max-width: 640px) { #trajecten.ss-1 .story-header h2 { margin-left: 0; max-width: none; text-align: left; } }
+
+/* ===== Contact: overlay-varianten zodat het contactblok meer opvalt ===== */
+/* 1. Zwaar links: links bijna zwart, rechts de foto */
+#contact.ct-1.cv-1 .overlap-image::after { background: linear-gradient(90deg, rgba(10,10,10,.98) 0%, rgba(10,10,10,.94) 42%, rgba(10,10,10,.55) 65%, rgba(10,10,10,.05) 100%); }
+#contact.ct-1.cv-1 .overlap-image img { filter: brightness(.9); }
+
+/* 2. Effen vlak: contactblok in een strak donker kader op de foto */
+#contact.ct-1.cv-2 .overlap-image::after { background: rgba(10,10,10,.35); }
+#contact.ct-1.cv-2 .overlap-image img { filter: brightness(.85); }
+#contact.ct-1.cv-2 .overlap-content { background: #111; padding: 3rem; border-top: 4px solid var(--accent); max-width: 46rem; }
+
+/* 3. Roze gloed: foto met een warme roze tint, tekst in donker vlak */
+#contact.ct-1.cv-3 .overlap-image img { filter: grayscale(1) brightness(.7) contrast(1.1); }
+#contact.ct-1.cv-3 .overlap-image::after { background: linear-gradient(90deg, rgba(10,10,10,.96) 0%, rgba(10,10,10,.85) 45%, rgba(209,124,115,.35) 100%); mix-blend-mode: normal; }
+
+/* 4. Foto alleen rechts: links effen donker, rechts de foto helder */
+#contact.ct-1.cv-4 .overlap-image { left: 48%; }
+#contact.ct-1.cv-4 .overlap-image img { filter: none; }
+#contact.ct-1.cv-4 .overlap-image::after { background: linear-gradient(90deg, #0d0d0d 0%, rgba(13,13,13,0) 35%); }
+#contact.ct-1.cv-4 .overlap-container { background: #0d0d0d; }
+
+/* 5. Glas: contactblok wazig over de foto */
+#contact.ct-1.cv-5 .overlap-image::after { background: linear-gradient(90deg, rgba(10,10,10,.6), rgba(10,10,10,.15)); }
+#contact.ct-1.cv-5 .overlap-image img { filter: brightness(.85); }
+#contact.ct-1.cv-5 .overlap-content { background: rgba(14,14,14,.6); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); padding: 3rem; border: 1px solid rgba(255,255,255,.12); max-width: 46rem; }
+
+/* Contactknoppen bij alle varianten iets steviger */
+#contact.ct-1[class*="cv-"] .contact-option { background: rgba(209,124,115,.12); }
+
+@media (max-width: 1024px) {
+    #contact.ct-1.cv-1 .overlap-image::after, #contact.ct-1.cv-3 .overlap-image::after { background: linear-gradient(0deg, rgba(10,10,10,.97) 0%, rgba(10,10,10,.9) 55%, rgba(10,10,10,.35) 100%); }
+    #contact.ct-1.cv-4 .overlap-image { left: 0; bottom: auto; height: 16rem; }
+    #contact.ct-1.cv-4 .overlap-image::after { background: linear-gradient(0deg, #0d0d0d 0%, rgba(13,13,13,0) 50%); }
+    #contact.ct-1.cv-4 .overlap-container { padding-top: 17rem; }
+}
+@media (max-width: 640px) {
+    #contact.ct-1.cv-2 .overlap-content, #contact.ct-1.cv-5 .overlap-content { padding: 1.6rem 1.2rem; }
+}
+
+/* Contact (glas) compacter (05-11) */
+#contact.ct-1.cv-5 .overlap-container { min-height: 0; padding-top: 4rem; padding-bottom: 4rem; }
+#contact.ct-1.cv-5 .overlap-content { padding: 2.2rem 2.4rem; max-width: 40rem; }
+#contact.ct-1.cv-5 .overlap-title { font-size: clamp(1.7rem, 7.4vw, 3.4rem); margin-bottom: 1rem; }
+#contact.ct-1.cv-5 .overlap-text { margin-bottom: 1.6rem; }
+#contact.ct-1.cv-5 .contact-bar { padding-top: 1.2rem; }
+#contact.ct-1.cv-5 .contact-option { padding: 1.1rem 1.3rem; }
+@media (max-width: 640px) {
+    #contact.ct-1.cv-5 .overlap-container { padding: 2.5rem 1rem; min-height: 0; }
+    #contact.ct-1.cv-5 .overlap-content { padding: 1.5rem 1.2rem; }
+}
+
+/* Vragen: kop op één regel, linkerkolom en foto breder (05-11) */
+#faq.fq .faq-header h2 br { display: none; }
+#faq.fq .faq-header h2 { white-space: nowrap; font-size: clamp(1.8rem, 3.4vw, 3.4rem); }
+@media (min-width: 1025px) {
+    #faq.fq-1 .faq-wrapper { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.3fr); gap: 4rem; max-width: 1300px; }
+    #faq.fq-1 .faq-visual { height: 22rem; }
+}
+@media (max-width: 1024px) { #faq.fq .faq-header { max-width: none; } #faq.fq .faq-visual { width: 100%; } }
+@media (max-width: 640px) { #faq.fq .faq-header h2 { font-size: clamp(1.6rem, 8.6vw, 2.4rem); } }
+
+/* ===== Overgang contact -> footer ===== */
+/* 1. Zacht vervagen: foto loopt onderaan over in de footerkleur */
+.ft-1 #contact.ct-1 .overlap-container::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 45%; z-index: 1; pointer-events: none; background: linear-gradient(0deg, #0e0e0e 0%, rgba(14,14,14,0) 100%); }
+.ft-1 #contact.ct-1 .overlap-content { z-index: 2; }
+.ft-1 #contact.ct-1 { margin-bottom: 0; }
+.ft-1 footer { border-top: 0; padding-top: 2rem; }
+
+/* 2. Schuine rand: footer begint met een schuine kant */
+.ft-2 #contact.ct-1 { margin-bottom: 0; }
+.ft-2 footer { position: relative; border-top: 0; margin-top: -4.5rem; padding-top: 7rem; z-index: 11; clip-path: polygon(0 4.5rem, 100% 0, 100% 100%, 0 100%); }
+.ft-2 footer::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 4.5rem; background: linear-gradient(to bottom right, transparent calc(50% - 2px), var(--accent) calc(50% - 2px), var(--accent) calc(50% + 1px), transparent calc(50% + 1px)); }
+
+/* 3. Roze lijn: dikke accentlijn tussen foto en footer */
+.ft-3 #contact.ct-1 { margin-bottom: 0; }
+.ft-3 footer { border-top: 4px solid var(--accent); }
+
+/* 4. Bewegende balk: dezelfde balk als onder de hero, als afsluiter */
+.ft-4 #contact.ct-1 { margin-bottom: 0; }
+.ft-4 footer { border-top: 0; }
+
+/* 5. Grote naam: enorme omlijnde naam bovenaan de footer */
+.ft-5 #contact.ct-1 { margin-bottom: 0; }
+.ft-5 footer { border-top: 0; padding-top: 0; overflow: hidden; }
+.ft-naam { font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; text-transform: uppercase; line-height: .8; letter-spacing: -.01em;
+    font-size: clamp(4rem, 17vw, 17rem); color: transparent; -webkit-text-stroke: 1.5px rgba(209,124,115,.55); text-align: center; white-space: nowrap; margin: -0.12em 0 2.5rem; }
+#faq .faq-visual.nieuwe-foto img { filter: none !important; opacity: 1 !important; }
+#faq .faq-visual.nieuwe-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(10,10,10,.75), rgba(10,10,10,0) 45%); pointer-events: none; } #faq .faq-visual.nieuwe-foto .faq-visual-text { z-index: 2; }
