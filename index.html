@@ -559,6 +559,9 @@ html{background-color:#0a0a0a}
   body.heeft-vaste-balk footer{padding-bottom:calc(6rem + env(safe-area-inset-bottom))}
 }
 @keyframes balk-in{from{transform:translate3d(0,100%,0)}to{transform:translate3d(0,0,0)}}
+.alleen-mobiel{display:none}
+@media (max-width:640px){.alleen-groot{display:none}.alleen-mobiel{display:inline}}
+@media (max-width:350px){.hero .hero-subtitle{font-size:.86rem}}
 </style>
     
     
@@ -613,7 +616,7 @@ html{background-color:#0a0a0a}
         <div class="ho-inner">
             <div class="eyebrow">Bokscoaching &amp; Therapie</div>
             <h1><span class="hero-line">VOOR WIE VASTLOOPT EN VIA</span><span class="hero-line accent">ACTIE WIL VERANDEREN!</span></h1>
-            <p class="hero-subtitle">Mentale coaching en fysieke training in één. Voor stress, burn-out, motivatieproblemen en gebrek aan zelfvertrouwen. We werken niet alleen met woorden, maar met beweging.</p>
+            <p class="hero-subtitle"><span class="alleen-groot">Mentale coaching en fysieke training in één. Voor stress, burn-out, motivatieproblemen en gebrek aan zelfvertrouwen. We werken niet alleen met woorden, maar met beweging.</span><span class="alleen-mobiel">Mentale coaching en training in één, bij stress, burn-out of weinig zelfvertrouwen.</span></p>
             <div class="hero-actions"><a href="#contact" class="btn">Start direct</a><a href="#aanpak" class="btn outline">Bekijk aanpak</a></div>
         </div>
     </section>
