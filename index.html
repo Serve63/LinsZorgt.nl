@@ -562,6 +562,14 @@ html{background-color:#0a0a0a}
 .alleen-mobiel{display:none}
 @media (max-width:640px){.alleen-groot{display:none}.alleen-mobiel{display:inline}}
 @media (max-width:350px){.hero .hero-subtitle{font-size:.86rem}}
+/* Mobiel: geen bewegende balk, hero-tekst in het midden over de foto (06-11) */
+@media (max-width:640px){
+  .ho-band--marquee{display:none!important}
+  .hero.ho-1{min-height:100svh;padding-top:5.5rem;padding-bottom:2.5rem;align-content:center;align-items:center}
+  .hero.ho-1 .ho-bg{height:100%;bottom:0}
+  .hero.ho-1 .ho-bg img{object-position:72% 30%}
+  .ho-1 .ho-bg::after{background:linear-gradient(180deg,rgba(10,10,10,.7) 0%,rgba(10,10,10,.8) 45%,rgba(10,10,10,.94) 100%)}
+}
 </style>
     
     
