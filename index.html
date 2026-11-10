@@ -10,9 +10,12 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="preload" as="image" href="assets/images/site/linsey-bag-color-1400.webp" imagesrcset="assets/images/site/linsey-bag-color-800.webp 800w, assets/images/site/linsey-bag-color-1400.webp 1400w" imagesizes="100vw" fetchpriority="high">
     <title>LinsZorgT | Bokscoaching & Therapie</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-latin.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="assets/fonts/barlow-condensed-800i-latin.woff2" crossorigin>
+    <style>
+@font-face{font-family:'Barlow Condensed';font-style:italic;font-weight:800;font-display:swap;src:url(assets/fonts/barlow-condensed-800i-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:300 600;font-display:swap;src:url(assets/fonts/inter-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+    </style>
     
     <style>
 :root{--lz-bg-primary: #0a0a0a; --lz-bg-secondary: #111; --lz-bg-card: rgba(255, 255, 255, 0.03); --lz-accent: #d17c73; --lz-accent-light: #e08b82; --lz-text-primary: #f0ebe5; --lz-text-secondary: #9a9590; --lz-text-tertiary: #5c5855; --lz-border: rgba(255, 255, 255, 0.08); --lz-border-hover: rgba(209, 124, 115, 0.4); --lz-ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1); --lz-page-max: 1400px; --lz-page-gutter: max(3rem, calc((100% - var(--lz-page-max)) / 2));}
@@ -21,7 +24,7 @@ html{scroll-behavior: smooth; scroll-padding-top: 5.5rem; -webkit-text-size-adju
 body{font-family: 'Inter', sans-serif; background-color: var(--lz-bg-primary); background-image: radial-gradient(1200px circle at 8% 90%, rgba(209, 124, 115, 0.06), transparent 60%), radial-gradient(800px circle at 0% 60%, rgba(209, 124, 115, 0.025), transparent 66%), radial-gradient(900px circle at 88% 12%, rgba(255, 255, 255, 0.05), transparent 60%), linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0)); background-attachment: fixed; color: var(--lz-text-primary); line-height: 1.6; overflow-x: hidden; font-weight: 300;}
 img{display: block; max-width: 100%;}
 .ambient-orbs{position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden;}
-.orb{position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.12; animation: float 20s infinite ease-in-out;}
+.orb{position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.12; animation: float 20s infinite ease-in-out; will-change: transform;}
 .orb-1{width: 500px; height: 500px; top: -100px; right: -100px; background: var(--lz-accent);}
 .orb-2{width: 400px; height: 400px; bottom: 10%; left: -100px; background: var(--lz-accent); opacity: 0.08; animation-delay: -5s;}
 @keyframes float{
