@@ -633,6 +633,10 @@ html{background-color:#0a0a0a}
 #samen .sv-modal .sv-optie em{margin:.45rem 0 .3rem;font-size:.9rem}
 #samen .sv-modal .sv-optie p{font-size:.88rem;line-height:1.55}
 #samen .sv-modal .sv-cta{padding-top:0}
+#samen .sv-modal,#samen .sv-modal:focus,#samen .sv-close:focus{outline:none}
+#samen .sv-close{-webkit-tap-highlight-color:transparent}
+#samen .sv-close:focus-visible{outline:2px solid var(--lz-accent);outline-offset:2px}
+@media (max-width:768px){#samen .sv-lang{display:none}#samen .sv-close:focus-visible{outline:none}}
 html.sv-lock,html.sv-lock body{overflow:hidden}
 @media (max-height:680px) and (min-width:769px){#samen .sv-mhead{padding:1rem 2rem .9rem}#samen .sv-mhead h3{font-size:1.5rem}#samen .sv-body{padding:1rem 2rem 1.1rem;gap:1rem 2rem}#samen .sv-modal .sv-optie{padding:.75rem 1rem}#samen .sv-modal .sv-optie b{font-size:1.7rem}#samen .sv-modal .sv-blok p,#samen .sv-modal .sv-optie p{font-size:.85rem;line-height:1.5}#samen .sv-modal .sv-cta .btn{padding:.7rem 1.4rem}}
 @media (max-width:768px){#samen .sv-modal{width:100vw;height:100dvh;max-height:100dvh;border:0}#samen .sv-inner{max-height:100dvh;height:100%}#samen .sv-mhead{padding:max(1.2rem,env(safe-area-inset-top)) 1.4rem 1.2rem}#samen .sv-body{padding-bottom:max(1.8rem,env(safe-area-inset-bottom))}}
@@ -824,7 +828,7 @@ html.sv-lock,html.sv-lock body{overflow:hidden}
                 </div>
                 <dialog class="sv-modal" id="ouder-kind-info" aria-labelledby="ouder-kind-titel">
                     <div class="sv-inner">
-                        <div class="sv-mhead"><div><div class="sv-label">01 · Ouder &amp; kind</div><h3 id="ouder-kind-titel">Ouder-kind sporttraject</h3><p class="sv-mtag">Samen sporten is het begin. Samen groeien is het doel.</p></div><button type="button" class="sv-close" aria-label="Sluiten">&times;</button></div>
+                        <div class="sv-mhead"><div><div class="sv-label">01 · Ouder &amp; kind</div><h3 id="ouder-kind-titel">Ouder-kind sporttraject</h3><p class="sv-mtag">Samen sporten is het begin.<span class="sv-lang"> Samen groeien is het doel.</span></p></div><button type="button" class="sv-close" aria-label="Sluiten">&times;</button></div>
                         <div class="sv-body">
                             <div class="sv-blok"><h4>Herken je dit?</h4><p>Je kind wil sporten, maar een sportclub geeft te veel prikkels. En zelf kom je door werk en een volle agenda nauwelijks aan sporten toe.</p></div>
                             <div class="sv-blok"><h4>Wat houdt het traject in?</h4><p>Samen bewegen, boksen en plezier maken. Sport is het middel om te werken aan vertrouwen, samenwerking en communicatie.</p></div>
@@ -855,7 +859,7 @@ html.sv-lock,html.sv-lock body{overflow:hidden}
                 </div>
                 <dialog class="sv-modal" id="duo-info" aria-labelledby="duo-titel">
                     <div class="sv-inner">
-                        <div class="sv-mhead"><div><div class="sv-label">02 · Duo volwassenen</div><h3 id="duo-titel">Duo-bokscoaching voor volwassenen</h3><p class="sv-mtag">Samen trainen, persoonlijk groeien.</p></div><button type="button" class="sv-close" aria-label="Sluiten">&times;</button></div>
+                        <div class="sv-mhead"><div><div class="sv-label">02 · Duo volwassenen</div><h3 id="duo-titel">Duo-bokscoaching voor volwassenen</h3><p class="sv-mtag">Samen trainen<span class="sv-lang">, persoonlijk groeien</span>.</p></div><button type="button" class="sv-close" aria-label="Sluiten">&times;</button></div>
                         <div class="sv-body">
                             <div class="sv-blok"><h4>Herken je dit?</h4><p>Je wilt aan jezelf werken, maar liever niet alleen. Samen met een vriend(in), partner of familielid gaat het een stuk makkelijker.</p></div>
                             <div class="sv-blok"><h4>Wat houdt het traject in?</h4><p>Samen boksen en bewegen, afgewisseld met individuele begeleiding. In de intake bepalen we welke aanpak het best bij jullie past.</p></div>
