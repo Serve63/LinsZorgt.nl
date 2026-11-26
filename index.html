@@ -577,6 +577,51 @@ html{background-color:#0a0a0a}
   .hero.ho-1{min-height:78svh;padding-top:5rem;padding-bottom:2rem}
   .hero.ho-1 .ho-bg::after{background:linear-gradient(180deg,rgba(10,10,10,.82) 0%,rgba(10,10,10,.86) 50%,rgba(10,10,10,.96) 100%)}
 }
+/* Bokscoaching in verbinding (ouder-kind + duo) */
+#samen .sv-head{max-width:1200px;margin:0 auto 3rem;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.5rem 4rem;align-items:end}
+#samen .sv-head h2{font-size:clamp(2rem,4vw,3rem)}
+#samen .sv-head p{color:var(--lz-text-secondary);line-height:1.75}
+#samen .sv-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;max-width:1200px;margin:0 auto;align-items:start}
+#samen .sv-card{background:var(--lz-bg-card);border:1px solid var(--lz-border);transition:border-color .3s var(--lz-ease-out-expo),background .3s;scroll-margin-top:6rem}
+#samen .sv-card:hover,#samen .sv-card.open{border-color:var(--lz-border-hover)}
+#samen .sv-card.open{grid-column:1/-1;background:rgba(209,124,115,.04)}
+#samen .sv-top{padding:2.6rem 2.6rem 2.2rem}
+#samen .sv-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;color:var(--lz-accent);font-weight:500;margin-bottom:1rem}
+#samen .sv-card h3{font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:.8rem}
+#samen .sv-tag{color:var(--lz-text-secondary);line-height:1.7;max-width:38rem}
+#samen .sv-focus{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem;margin:1.5rem 0 1.8rem}
+#samen .sv-focus li{font-size:.8rem;padding:.45rem .8rem;border:1px solid rgba(255,255,255,.14);color:var(--lz-text-primary)}
+#samen .sv-toggle{cursor:pointer;font-family:inherit}
+#samen .sv-toggle .sv-plus{display:inline-block;transition:transform .3s var(--lz-ease-out-expo);font-size:1.1rem;line-height:1}
+#samen .sv-card.open .sv-toggle .sv-plus{transform:rotate(45deg)}
+#samen .sv-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--lz-ease-out-expo)}
+#samen .sv-card.open .sv-panel{grid-template-rows:1fr}
+#samen .sv-inner{overflow:hidden;min-height:0}
+#samen .sv-body{padding:0 2.6rem 2.6rem;border-top:1px solid var(--lz-border);padding-top:2.4rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem 3rem}
+#samen .sv-blok h4{font-family:"Barlow Condensed",sans-serif;font-style:italic;font-weight:800;font-size:1.35rem;letter-spacing:-.01em;margin-bottom:.8rem;color:var(--lz-text-primary)}
+#samen .sv-blok p{color:var(--lz-text-secondary);line-height:1.75;margin-bottom:.9rem}
+#samen .sv-blok p:last-child{margin-bottom:0}
+#samen .sv-quote{grid-column:1/-1;font-family:"Barlow Condensed",sans-serif;font-style:italic;font-weight:800;font-size:clamp(1.4rem,2.6vw,2rem);color:var(--lz-accent);line-height:1.1}
+#samen .sv-kies{grid-column:1/-1}
+#samen .sv-kies h4{font-family:"Barlow Condensed",sans-serif;font-style:italic;font-weight:800;font-size:1.35rem;letter-spacing:-.01em;margin-bottom:1.2rem}
+#samen .sv-opties{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid rgba(255,255,255,.14)}
+#samen .sv-optie{padding:1.6rem 1.5rem;border-left:1px solid rgba(255,255,255,.14)}
+#samen .sv-optie:first-child{border-left:0}
+#samen .sv-optie b{display:block;font-family:"Barlow Condensed",sans-serif;font-style:italic;font-weight:800;font-size:2.6rem;line-height:.9;color:var(--lz-text-primary)}
+#samen .sv-optie b small{font-size:.72rem;font-family:'Inter',sans-serif;font-style:normal;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--lz-text-secondary);margin-left:.4rem}
+#samen .sv-optie em{display:block;font-style:normal;font-weight:500;color:var(--lz-accent);margin:.7rem 0 .6rem;font-size:.95rem}
+#samen .sv-optie p{color:var(--lz-text-secondary);line-height:1.7;font-size:.94rem}
+#samen .sv-optie:nth-child(2){background:rgba(209,124,115,.08)}
+#samen .sv-cta{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.5rem;padding-top:.4rem}
+#samen .sv-cta p{color:var(--lz-text-secondary);font-size:.92rem}
+#samen .sv-cta p a{color:var(--lz-text-primary);display:inline-flex;align-items:center;min-height:40px}
+#samen .sv-card{min-width:0}
+#samen .sv-toggle{white-space:normal}
+@media (max-width:1024px){#samen .sv-head{grid-template-columns:1fr}#samen .sv-body{grid-template-columns:1fr 1fr}#samen .sv-opties{grid-template-columns:1fr}#samen .sv-optie{border-left:0;border-top:1px solid rgba(255,255,255,.14)}#samen .sv-optie:first-child{border-top:0}}
+@media (max-width:768px){#samen .sv-grid{grid-template-columns:minmax(0,1fr);gap:1rem}#samen .sv-card.open{grid-column:auto}#samen .sv-top{padding:1.8rem 1.4rem 1.6rem}#samen .sv-body{grid-template-columns:1fr;padding:1.8rem 1.4rem 1.8rem;gap:1.6rem}#samen .sv-head{margin-bottom:2rem}}
+@media (max-width:480px){#samen .sv-cta .btn{width:100%;justify-content:center;white-space:normal;text-align:center}}
+@media (prefers-reduced-motion: reduce){#samen .sv-panel{transition:none}}
+
 </style>
     
     
@@ -602,6 +647,7 @@ html{background-color:#0a0a0a}
             <a href="#aanpak">Werkwijze</a>
             <a href="#over">Over mij</a>
             <a href="#trajecten">Traject</a>
+            <a href="#samen">Samen</a>
             <a href="#contact" class="btn">Start direct</a>
         </div>
         <button class="nav-toggle" type="button" aria-label="Open menu" aria-controls="nav-drawer" aria-expanded="false">
@@ -620,6 +666,7 @@ html{background-color:#0a0a0a}
                 <a href="#aanpak" data-nav-link>Werkwijze</a>
                 <a href="#over" data-nav-link>Over mij</a>
                 <a href="#trajecten" data-nav-link>Traject</a>
+                <a href="#samen" data-nav-link>Samen</a>
                 <a href="#contact" class="btn" data-nav-link>Start direct</a>
             </div>
         </div>
@@ -735,6 +782,80 @@ html{background-color:#0a0a0a}
             </article>
         </div>
         <p class="story-note fade-up">De praktische invulling en investering bespreken we pas na het intakegesprek, zodat het traject echt past bij jouw behoeften.</p>
+    </section>
+
+    <!-- Bokscoaching in verbinding -->
+    <section id="samen" class="sv">
+        <div class="sv-head fade-up">
+            <div>
+                <div class="eyebrow">Samen trainen</div>
+                <h2>Bokscoaching in verbinding</h2>
+            </div>
+            <p>Liever samen met iemand aan de slag? Kies voor een traject met je kind of met een vriend(in), partner of familielid. Klik op een traject voor alle informatie.</p>
+        </div>
+        <div class="sv-grid">
+            <article class="sv-card fade-up" id="ouder-kind">
+                <div class="sv-top">
+                    <div class="sv-label">01 · Ouder & kind</div>
+                    <h3>Ouder-kind sporttraject</h3>
+                    <p class="sv-tag">Samen bewegen, plezier beleven en werken aan jullie ouder-kindrelatie.</p>
+                    <ul class="sv-focus"><li>Ouder-kindrelatie versterken</li><li>Opvoedpatronen herkennen</li><li>Behoefte van ouder en kind</li><li>Samen groeien als ouder en kind</li></ul>
+                    <button type="button" class="btn outline sv-toggle" aria-expanded="false" aria-controls="ouder-kind-info"><span class="sv-txt">Bekijk het traject</span> <span class="sv-plus" aria-hidden="true">+</span></button>
+                </div>
+                <div class="sv-panel" id="ouder-kind-info">
+                    <div class="sv-inner">
+                        <div class="sv-body">
+                            <div class="sv-blok"><h4>Herken je dit?</h4><p>Je kind wil graag sporten, maar een reguliere sportclub is misschien te druk of geeft te veel prikkels. Ondertussen heb je als ouder je eigen werk, verplichtingen en een volle agenda. Tijd om zelf te sporten schiet er regelmatig bij in.</p><p>En samen sporten? Je kind meenemen naar de sportschool is niet altijd een optie. Daarom bied ik ouder-kind sporttrajecten aan.</p></div>
+                            <div class="sv-blok"><h4>Wat houdt het traject in?</h4><p>Tijdens deze trajecten gaan jullie samen bewegen, boksen en plezier maken. Een moment waarop jullie allebei actief bezig zijn en echt tijd hebben voor elkaar.</p><p>Maar het gaat om meer dan samen sporten. Sport en boksen vormen het middel om op een andere manier met elkaar in contact te komen. Tijdens de oefeningen werken jullie aan vertrouwen, samenwerking en communicatie. We staan stil bij jullie onderlinge dynamiek, gedrag en onbewuste patronen. Wat gebeurt er tussen jullie? Hoe reageren jullie op elkaar? Wat hebben jullie allebei nodig?</p></div>
+                            <div class="sv-blok"><h4>Wat levert het op?</h4><p>Je krijgt inzicht in jezelf en elkaar en leert op een praktische manier nieuwe vaardigheden toepassen in jullie dagelijks contact.</p><p>Zo combineren we plezier en beweging met het versterken van jullie ouder-kindrelatie.</p></div>
+                            <p class="sv-quote">Samen sporten is het begin. Samen groeien is het doel.</p>
+                            <div class="sv-kies">
+                                <h4 class="sv-blok-h">Kies het traject dat bij jullie past</h4>
+                                <div class="sv-opties">
+                                <div class="sv-optie"><b>5<small>sessies</small></b><em>Samen ontdekken &amp; kennismaken</em><p>Samen bewegen, boksen en plezier maken. We leren elkaar kennen en onderzoeken wat jullie fijn vinden om samen te doen. Er is aandacht voor de eerste zichtbare patronen in jullie contact, communicatie en samenwerking.</p></div>
+                                <div class="sv-optie"><b>10<small>sessies</small></b><em>Inzicht &amp; verdieping</em><p>We gaan dieper in op jullie onderlinge dynamiek en werken aan verandering in het hier en nu. Hoe reageren jullie op elkaar? Welke patronen komen steeds terug? Hoe reageer je als ouder op het gedrag van je kind en wat heeft je kind op dat moment nodig? We oefenen met andere manieren van communiceren en reageren.</p></div>
+                                <div class="sv-optie"><b>20<small>sessies</small></b><em>Patronen doorbreken &amp; duurzame verandering</em><p>We onderzoeken ook de achtergrond van bepaalde patronen. Waar komen bepaalde reacties en gewoontes vandaan? Hoe ben jij zelf opgevoed? Wat heb je daarvan meegenomen in je ouderschap en wat wil je juist aan je kind meegeven? Welke patronen wil je doorbreken? We werken aan bewustwording, nieuwe vaardigheden en een andere manier van omgaan met elkaar.</p></div>
+                                </div>
+                            </div>
+                            <div class="sv-cta">
+                                <a href="mailto:info@linszorgt.nl?subject=Intake%20ouder-kind%20sporttraject" class="btn">Vraag een intake aan</a>
+                                <p>Of bel direct: <a href="tel:+31648551774">06-48551774</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="sv-card fade-up" id="duo">
+                <div class="sv-top">
+                    <div class="sv-label">02 · Duo volwassenen</div>
+                    <h3>Duo-bokscoaching voor volwassenen</h3>
+                    <p class="sv-tag">Samen trainen, werken aan persoonlijke doelen en inzicht krijgen in jullie onderlinge dynamiek.</p>
+                    <ul class="sv-focus"><li>Persoonlijke doelen ontwikkelen</li><li>Onderlinge patronen herkennen</li><li>Behoefte van beide deelnemers</li><li>Samen groeien als volwassenen</li></ul>
+                    <button type="button" class="btn outline sv-toggle" aria-expanded="false" aria-controls="duo-info"><span class="sv-txt">Bekijk het traject</span> <span class="sv-plus" aria-hidden="true">+</span></button>
+                </div>
+                <div class="sv-panel" id="duo-info">
+                    <div class="sv-inner">
+                        <div class="sv-body">
+                            <div class="sv-blok"><h4>Samen trainen, persoonlijk groeien</h4><p>Wil je werken aan jezelf, maar vind je het fijn om dit samen met iemand te doen? Tijdens duo-bokscoaching ga je samen met een vriend(in), partner of familielid aan de slag.</p></div>
+                            <div class="sv-blok"><h4>Wat houdt het traject in?</h4><p>Afhankelijk van jullie doelen wisselen we gezamenlijke oefeningen af met individuele begeleiding. Soms is het waardevol om juist samen te oefenen en onderlinge patronen zichtbaar te maken. Op andere momenten is het belangrijk om individueel aan de slag te gaan.</p><p>Tijdens de intake bespreken we jullie wensen en doelen en kijken we welke aanpak het beste bij jullie past.</p></div>
+                            <div class="sv-blok"><h4>Wat levert het op?</h4><p>Jullie werken allebei aan persoonlijke doelen en leren tegelijkertijd van elkaar.</p><p>Door samen te boksen en te bewegen, ontstaat ruimte om te werken aan zelfvertrouwen, grenzen aangeven, communicatie en persoonlijke ontwikkeling.</p></div>
+                            <div class="sv-kies">
+                                <h4 class="sv-blok-h">Kies het traject dat bij jullie past</h4>
+                                <div class="sv-opties">
+                                <div class="sv-optie"><b>5<small>sessies</small></b><em>Kennismaking &amp; inzicht</em><p>Samen ontdekken wat boksen en bewegen voor jullie kunnen betekenen. We werken aan individuele doelen en kijken hoe jullie op elkaar reageren. Er ontstaat inzicht in onderlinge patronen, communicatie en samenwerking.</p></div>
+                                <div class="sv-optie"><b>10<small>sessies</small></b><em>Verdieping &amp; persoonlijke ontwikkeling</em><p>We gaan dieper in op jullie individuele doelen en de dynamiek tussen jullie. Tijdens de trainingen wisselen we gezamenlijke oefeningen af met individuele begeleiding. Zo ontstaat ruimte voor persoonlijke ontwikkeling én het onderzoeken van jullie onderlinge interactie.</p></div>
+                                <div class="sv-optie"><b>20<small>sessies</small></b><em>Verandering &amp; duurzame ontwikkeling</em><p>We werken aan hardnekkigere patronen en gedragsverandering. Wat nemen jullie van elkaar over? Welke rollen of verwachtingen spelen mee? Door individuele begeleiding, gezamenlijke oefeningen en reflectie ontstaat ruimte om nieuwe manieren van communiceren en samenwerken te ontwikkelen.</p></div>
+                                </div>
+                            </div>
+                            <div class="sv-cta">
+                                <a href="mailto:info@linszorgt.nl?subject=Intake%20duo-bokscoaching" class="btn">Vraag een intake aan</a>
+                                <p>Of bel direct: <a href="tel:+31648551774">06-48551774</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
     </section>
 
     <!-- FAQ -->
@@ -880,6 +1001,7 @@ html{background-color:#0a0a0a}
                 <a href="#aanpak">Werkwijze</a>
                 <a href="#over">Over mij</a>
                 <a href="#trajecten">Traject</a>
+                <a href="#samen">Samen</a>
                 <a href="#contact">Contact</a>
             </div>
 
@@ -977,6 +1099,29 @@ html{background-color:#0a0a0a}
             window.addEventListener('resize', zetBalk);
             zetBalk();
         }
+
+
+        // Bokscoaching in verbinding: trajecten uitklappen
+        const svCards = document.querySelectorAll('#samen .sv-card');
+        const svZet = (card, open) => {
+            const btn = card.querySelector('.sv-toggle');
+            card.classList.toggle('open', open);
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            btn.querySelector('.sv-txt').textContent = open ? 'Sluit het traject' : 'Bekijk het traject';
+        };
+        svCards.forEach(card => {
+            card.querySelector('.sv-toggle').addEventListener('click', () => {
+                const open = !card.classList.contains('open');
+                svZet(card, open);
+                if (open) setTimeout(() => card.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' }), 60);
+            });
+        });
+        const svHash = () => {
+            const doel = document.getElementById(location.hash.slice(1));
+            if (doel && doel.classList.contains('sv-card')) { svZet(doel, true); doel.scrollIntoView({ block: 'start' }); }
+        };
+        window.addEventListener('hashchange', svHash);
+        svHash();
 
         // FAQ accordion
         const faqItems = document.querySelectorAll('.faq-item');
