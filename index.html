@@ -589,7 +589,7 @@ html{background-color:#0a0a0a}
 #samen .sv-card h3{font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:.8rem}
 #samen .sv-tag{color:var(--lz-text-secondary);line-height:1.7;max-width:38rem}
 #samen .sv-focus{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem;margin:1.5rem 0 1.8rem}
-#samen .sv-focus li{font-size:.8rem;padding:.45rem .8rem;border:1px solid rgba(255,255,255,.14);color:var(--lz-text-primary)}
+#samen .sv-focus li{font-size:.8rem;padding:.45rem .8rem;border:1px solid var(--lz-accent);color:var(--lz-text-primary)}
 #samen .sv-toggle{cursor:pointer;font-family:inherit}
 #samen .sv-toggle .sv-plus{display:inline-block;transition:transform .3s var(--lz-ease-out-expo);font-size:1.1rem;line-height:1}
 #samen .sv-body{padding:1.4rem 2.2rem 1.6rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.3rem 2.4rem}
@@ -640,7 +640,7 @@ html.sv-lock,html.sv-lock body{overflow:hidden}
 @media (max-width:1024px){#samen .sv-head{grid-template-columns:1fr}}
 @media (max-width:768px){#samen .sv-opties{grid-template-columns:1fr}#samen .sv-optie{border-left:0;border-top:1px solid rgba(255,255,255,.14)}#samen .sv-optie:first-child{border-top:0}}
 @media (max-width:768px){#samen .sv-grid{grid-template-columns:minmax(0,1fr);gap:1rem}#samen .sv-top{padding:1.8rem 1.4rem 1.6rem}#samen .sv-body{grid-template-columns:1fr;padding:1.8rem 1.4rem 1.8rem;gap:1.6rem}#samen .sv-head{margin-bottom:2rem}}
-@media (max-width:480px){#samen .sv-cta .btn{width:100%;justify-content:center;white-space:normal;text-align:center}}
+@media (max-width:480px){#samen .sv-cta .btn,#samen .sv-cta .sv-bel{width:100%;justify-content:center;white-space:normal;text-align:center}}
 
 </style>
     
@@ -826,20 +826,20 @@ html.sv-lock,html.sv-lock body{overflow:hidden}
                     <div class="sv-inner">
                         <div class="sv-mhead"><div><div class="sv-label">01 · Ouder &amp; kind</div><h3 id="ouder-kind-titel">Ouder-kind sporttraject</h3><p class="sv-mtag">Samen sporten is het begin. Samen groeien is het doel.</p></div><button type="button" class="sv-close" aria-label="Sluiten">&times;</button></div>
                         <div class="sv-body">
-                            <div class="sv-blok"><h4>Herken je dit?</h4><p>Je kind wil sporten, maar een sportclub is te druk of geeft te veel prikkels. En zelf kom je door werk en een volle agenda nauwelijks aan sporten toe.</p></div>
-                            <div class="sv-blok"><h4>Wat houdt het traject in?</h4><p>Samen bewegen, boksen en plezier maken. Sport is het middel: we werken aan vertrouwen, samenwerking en communicatie en kijken naar jullie onderlinge patronen.</p></div>
-                            <div class="sv-blok"><h4>Wat levert het op?</h4><p>Inzicht in jezelf en elkaar, nieuwe vaardigheden voor jullie dagelijks contact en een sterkere ouder-kindrelatie.</p></div>
+                            <div class="sv-blok"><h4>Herken je dit?</h4><p>Je kind wil sporten, maar een sportclub geeft te veel prikkels. En zelf kom je door werk en een volle agenda nauwelijks aan sporten toe.</p></div>
+                            <div class="sv-blok"><h4>Wat houdt het traject in?</h4><p>Samen bewegen, boksen en plezier maken. Sport is het middel om te werken aan vertrouwen, samenwerking en communicatie.</p></div>
+                            <div class="sv-blok"><h4>Wat levert het op?</h4><p>Inzicht in jezelf en elkaar, nieuwe vaardigheden voor jullie dagelijks contact en een sterkere band tussen jou en je kind.</p></div>
                             <div class="sv-kies">
                                 <h4>Kies het traject dat bij jullie past</h4>
                                 <div class="sv-opties">
-                                    <div class="sv-optie"><b>5<small>sessies</small></b><em>Samen ontdekken &amp; kennismaken</em><p>Plezier maken, elkaar leren kennen en de eerste patronen in jullie contact zien.</p></div>
-                                    <div class="sv-optie"><b>10<small>sessies</small></b><em>Inzicht &amp; verdieping</em><p>Dieper in jullie dynamiek: hoe reageren jullie op elkaar en wat heeft je kind nodig?</p></div>
-                                    <div class="sv-optie"><b>20<small>sessies</small></b><em>Patronen doorbreken</em><p>Waar komen patronen vandaan, ook uit je eigen opvoeding? Samen werken aan blijvende verandering.</p></div>
+                                    <div class="sv-optie"><b>5<small>sessies</small></b><em>Samen ontdekken &amp; kennismaken</em><p>Plezier maken, elkaar leren kennen en de eerste patronen in jullie contact ontdekken.</p></div>
+                                    <div class="sv-optie"><b>10<small>sessies</small></b><em>Inzicht &amp; verdieping</em><p>Dieper in jullie dynamiek: hoe reageren jullie op elkaar en wat heeft je kind dan nodig?</p></div>
+                                    <div class="sv-optie"><b>20<small>sessies</small></b><em>Patronen doorbreken</em><p>Patronen uit je eigen opvoeding herkennen en samen werken aan blijvende verandering.</p></div>
                                 </div>
                             </div>
                             <div class="sv-cta">
                                 <a href="mailto:info@linszorgt.nl?subject=Intake%20ouder-kind%20sporttraject" class="btn">Vraag een intake aan</a>
-                                <p>Of bel direct: <a href="tel:+31648551774">06-48551774</a></p>
+                                <a href="tel:+31648551774" class="btn outline sv-bel">06-48551774</a>
                             </div>
                         </div>
                     </div>
@@ -857,20 +857,20 @@ html.sv-lock,html.sv-lock body{overflow:hidden}
                     <div class="sv-inner">
                         <div class="sv-mhead"><div><div class="sv-label">02 · Duo volwassenen</div><h3 id="duo-titel">Duo-bokscoaching voor volwassenen</h3><p class="sv-mtag">Samen trainen, persoonlijk groeien.</p></div><button type="button" class="sv-close" aria-label="Sluiten">&times;</button></div>
                         <div class="sv-body">
-                            <div class="sv-blok"><h4>Herken je dit?</h4><p>Je wilt aan jezelf werken, maar doet dat liever samen met een vriend(in), partner of familielid.</p></div>
-                            <div class="sv-blok"><h4>Wat houdt het traject in?</h4><p>Samen boksen en bewegen, afgewisseld met individuele begeleiding. In de intake bepalen we welke aanpak bij jullie past.</p></div>
-                            <div class="sv-blok"><h4>Wat levert het op?</h4><p>Meer zelfvertrouwen, leren grenzen aangeven, betere communicatie en inzicht in jullie onderlinge patronen.</p></div>
+                            <div class="sv-blok"><h4>Herken je dit?</h4><p>Je wilt aan jezelf werken, maar liever niet alleen. Samen met een vriend(in), partner of familielid gaat het een stuk makkelijker.</p></div>
+                            <div class="sv-blok"><h4>Wat houdt het traject in?</h4><p>Samen boksen en bewegen, afgewisseld met individuele begeleiding. In de intake bepalen we welke aanpak het best bij jullie past.</p></div>
+                            <div class="sv-blok"><h4>Wat levert het op?</h4><p>Meer zelfvertrouwen, grenzen leren aangeven, betere communicatie en meer inzicht in de patronen tussen jullie twee.</p></div>
                             <div class="sv-kies">
                                 <h4>Kies het traject dat bij jullie past</h4>
                                 <div class="sv-opties">
-                                    <div class="sv-optie"><b>5<small>sessies</small></b><em>Kennismaking &amp; inzicht</em><p>Ontdekken wat boksen voor jullie betekent en zien hoe jullie op elkaar reageren.</p></div>
+                                    <div class="sv-optie"><b>5<small>sessies</small></b><em>Kennismaking &amp; inzicht</em><p>Ontdekken wat boksen voor jullie betekent en zien hoe jullie samen op elkaar reageren.</p></div>
                                     <div class="sv-optie"><b>10<small>sessies</small></b><em>Verdieping &amp; ontwikkeling</em><p>Dieper in op jullie eigen doelen en de dynamiek tussen jullie, samen en individueel.</p></div>
-                                    <div class="sv-optie"><b>20<small>sessies</small></b><em>Duurzame verandering</em><p>Hardnekkige patronen, rollen en verwachtingen doorbreken en nieuwe manieren van samenwerken leren.</p></div>
+                                    <div class="sv-optie"><b>20<small>sessies</small></b><em>Duurzame verandering</em><p>Oude patronen en rollen doorbreken en een nieuwe manier van samenwerken leren.</p></div>
                                 </div>
                             </div>
                             <div class="sv-cta">
                                 <a href="mailto:info@linszorgt.nl?subject=Intake%20duo-bokscoaching" class="btn">Vraag een intake aan</a>
-                                <p>Of bel direct: <a href="tel:+31648551774">06-48551774</a></p>
+                                <a href="tel:+31648551774" class="btn outline sv-bel">06-48551774</a>
                             </div>
                         </div>
                     </div>
