@@ -584,7 +584,6 @@ html{background-color:#0a0a0a}
 #samen .sv-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;max-width:1200px;margin:0 auto;align-items:start}
 #samen .sv-card{background:var(--lz-bg-card);border:1px solid var(--lz-border);transition:border-color .3s var(--lz-ease-out-expo),background .3s;scroll-margin-top:6rem}
 #samen .sv-card:hover,#samen .sv-card.open{border-color:var(--lz-border-hover)}
-#samen .sv-card.open{grid-column:1/-1;background:rgba(209,124,115,.04)}
 #samen .sv-top{padding:2.6rem 2.6rem 2.2rem}
 #samen .sv-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;color:var(--lz-accent);font-weight:500;margin-bottom:1rem}
 #samen .sv-card h3{font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:.8rem}
@@ -593,11 +592,7 @@ html{background-color:#0a0a0a}
 #samen .sv-focus li{font-size:.8rem;padding:.45rem .8rem;border:1px solid rgba(255,255,255,.14);color:var(--lz-text-primary)}
 #samen .sv-toggle{cursor:pointer;font-family:inherit}
 #samen .sv-toggle .sv-plus{display:inline-block;transition:transform .3s var(--lz-ease-out-expo);font-size:1.1rem;line-height:1}
-#samen .sv-card.open .sv-toggle .sv-plus{transform:rotate(45deg)}
-#samen .sv-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--lz-ease-out-expo)}
-#samen .sv-card.open .sv-panel{grid-template-rows:1fr}
-#samen .sv-inner{overflow:hidden;min-height:0}
-#samen .sv-body{padding:0 2.6rem 2.6rem;border-top:1px solid var(--lz-border);padding-top:2.4rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem 3rem}
+#samen .sv-body{padding:2.2rem 2.6rem 2.6rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem 3rem}
 #samen .sv-blok h4{font-family:"Barlow Condensed",sans-serif;font-style:italic;font-weight:800;font-size:1.35rem;letter-spacing:-.01em;margin-bottom:.8rem;color:var(--lz-text-primary)}
 #samen .sv-blok p{color:var(--lz-text-secondary);line-height:1.75;margin-bottom:.9rem}
 #samen .sv-blok p:last-child{margin-bottom:0}
@@ -617,10 +612,22 @@ html{background-color:#0a0a0a}
 #samen .sv-cta p a{color:var(--lz-text-primary);display:inline-flex;align-items:center;min-height:40px}
 #samen .sv-card{min-width:0}
 #samen .sv-toggle{white-space:normal}
+#samen .sv-modal{padding:0;margin:auto;border:1px solid rgba(255,255,255,.12);background:#111;color:var(--lz-text-primary);width:min(1100px,calc(100vw - 2rem));max-width:none;max-height:calc(100dvh - 2rem);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+#samen .sv-modal::backdrop{background:rgba(5,5,5,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+#samen .sv-modal[open]{animation:svIn .35s var(--lz-ease-out-expo)}
+@keyframes svIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+#samen .sv-inner{max-height:calc(100dvh - 2rem);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+#samen .sv-mhead{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;padding:2rem 2.6rem 1.6rem;background:#111;border-bottom:1px solid var(--lz-border)}
+#samen .sv-mhead .sv-label{margin-bottom:.6rem}
+#samen .sv-mhead h3{margin:0}
+#samen .sv-close{flex:none;width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.04);color:var(--lz-text-primary);font-size:1.6rem;line-height:1;cursor:pointer;font-family:inherit;transition:border-color .2s,background .2s}
+#samen .sv-close:hover{border-color:var(--lz-accent);background:rgba(209,124,115,.15)}
+html.sv-lock,html.sv-lock body{overflow:hidden}
+@media (max-width:768px){#samen .sv-modal{width:100vw;height:100dvh;max-height:100dvh;border:0}#samen .sv-inner{max-height:100dvh;height:100%}#samen .sv-mhead{padding:max(1.2rem,env(safe-area-inset-top)) 1.4rem 1.2rem}#samen .sv-body{padding-bottom:max(1.8rem,env(safe-area-inset-bottom))}}
+@media (prefers-reduced-motion: reduce){#samen .sv-modal[open]{animation:none}}
 @media (max-width:1024px){#samen .sv-head{grid-template-columns:1fr}#samen .sv-body{grid-template-columns:1fr 1fr}#samen .sv-opties{grid-template-columns:1fr}#samen .sv-optie{border-left:0;border-top:1px solid rgba(255,255,255,.14)}#samen .sv-optie:first-child{border-top:0}}
-@media (max-width:768px){#samen .sv-grid{grid-template-columns:minmax(0,1fr);gap:1rem}#samen .sv-card.open{grid-column:auto}#samen .sv-top{padding:1.8rem 1.4rem 1.6rem}#samen .sv-body{grid-template-columns:1fr;padding:1.8rem 1.4rem 1.8rem;gap:1.6rem}#samen .sv-head{margin-bottom:2rem}}
+@media (max-width:768px){#samen .sv-grid{grid-template-columns:minmax(0,1fr);gap:1rem}#samen .sv-top{padding:1.8rem 1.4rem 1.6rem}#samen .sv-body{grid-template-columns:1fr;padding:1.8rem 1.4rem 1.8rem;gap:1.6rem}#samen .sv-head{margin-bottom:2rem}}
 @media (max-width:480px){#samen .sv-cta .btn{width:100%;justify-content:center;white-space:normal;text-align:center}}
-@media (prefers-reduced-motion: reduce){#samen .sv-panel{transition:none}}
 
 </style>
     
@@ -791,7 +798,7 @@ html{background-color:#0a0a0a}
                 <div class="eyebrow">Samen trainen</div>
                 <h2>Bokscoaching in verbinding</h2>
             </div>
-            <p>Liever samen met iemand aan de slag? Kies voor een traject met je kind of met een vriend(in), partner of familielid. Klik op een traject voor alle informatie.</p>
+            <p>Liever samen aan de slag? Kies een traject met je kind, of met een vriend(in), partner of familielid.</p>
         </div>
         <div class="sv-grid">
             <article class="sv-card fade-up" id="ouder-kind">
@@ -800,10 +807,11 @@ html{background-color:#0a0a0a}
                     <h3>Ouder-kind sporttraject</h3>
                     <p class="sv-tag">Samen bewegen, plezier beleven en werken aan jullie ouder-kindrelatie.</p>
                     <ul class="sv-focus"><li>Ouder-kindrelatie versterken</li><li>Opvoedpatronen herkennen</li><li>Behoefte van ouder en kind</li><li>Samen groeien als ouder en kind</li></ul>
-                    <button type="button" class="btn outline sv-toggle" aria-expanded="false" aria-controls="ouder-kind-info"><span class="sv-txt">Bekijk het traject</span> <span class="sv-plus" aria-hidden="true">+</span></button>
+                    <button type="button" class="btn outline sv-toggle" aria-haspopup="dialog" aria-controls="ouder-kind-info"><span class="sv-txt">Bekijk het traject</span> <span class="sv-plus" aria-hidden="true">+</span></button>
                 </div>
-                <div class="sv-panel" id="ouder-kind-info">
+                <dialog class="sv-modal" id="ouder-kind-info" aria-labelledby="ouder-kind-titel">
                     <div class="sv-inner">
+                        <div class="sv-mhead"><div><div class="sv-label">01 · Ouder &amp; kind</div><h3 id="ouder-kind-titel">Ouder-kind sporttraject</h3></div><button type="button" class="sv-close" aria-label="Sluiten">&times;</button></div>
                         <div class="sv-body">
                             <div class="sv-blok"><h4>Herken je dit?</h4><p>Je kind wil graag sporten, maar een reguliere sportclub is misschien te druk of geeft te veel prikkels. Ondertussen heb je als ouder je eigen werk, verplichtingen en een volle agenda. Tijd om zelf te sporten schiet er regelmatig bij in.</p><p>En samen sporten? Je kind meenemen naar de sportschool is niet altijd een optie. Daarom bied ik ouder-kind sporttrajecten aan.</p></div>
                             <div class="sv-blok"><h4>Wat houdt het traject in?</h4><p>Tijdens deze trajecten gaan jullie samen bewegen, boksen en plezier maken. Een moment waarop jullie allebei actief bezig zijn en echt tijd hebben voor elkaar.</p><p>Maar het gaat om meer dan samen sporten. Sport en boksen vormen het middel om op een andere manier met elkaar in contact te komen. Tijdens de oefeningen werken jullie aan vertrouwen, samenwerking en communicatie. We staan stil bij jullie onderlinge dynamiek, gedrag en onbewuste patronen. Wat gebeurt er tussen jullie? Hoe reageren jullie op elkaar? Wat hebben jullie allebei nodig?</p></div>
@@ -823,7 +831,7 @@ html{background-color:#0a0a0a}
                             </div>
                         </div>
                     </div>
-                </div>
+                </dialog>
             </article>
             <article class="sv-card fade-up" id="duo">
                 <div class="sv-top">
@@ -831,10 +839,11 @@ html{background-color:#0a0a0a}
                     <h3>Duo-bokscoaching voor volwassenen</h3>
                     <p class="sv-tag">Samen trainen, werken aan persoonlijke doelen en inzicht krijgen in jullie onderlinge dynamiek.</p>
                     <ul class="sv-focus"><li>Persoonlijke doelen ontwikkelen</li><li>Onderlinge patronen herkennen</li><li>Behoefte van beide deelnemers</li><li>Samen groeien als volwassenen</li></ul>
-                    <button type="button" class="btn outline sv-toggle" aria-expanded="false" aria-controls="duo-info"><span class="sv-txt">Bekijk het traject</span> <span class="sv-plus" aria-hidden="true">+</span></button>
+                    <button type="button" class="btn outline sv-toggle" aria-haspopup="dialog" aria-controls="duo-info"><span class="sv-txt">Bekijk het traject</span> <span class="sv-plus" aria-hidden="true">+</span></button>
                 </div>
-                <div class="sv-panel" id="duo-info">
+                <dialog class="sv-modal" id="duo-info" aria-labelledby="duo-titel">
                     <div class="sv-inner">
+                        <div class="sv-mhead"><div><div class="sv-label">02 · Duo volwassenen</div><h3 id="duo-titel">Duo-bokscoaching voor volwassenen</h3></div><button type="button" class="sv-close" aria-label="Sluiten">&times;</button></div>
                         <div class="sv-body">
                             <div class="sv-blok"><h4>Samen trainen, persoonlijk groeien</h4><p>Wil je werken aan jezelf, maar vind je het fijn om dit samen met iemand te doen? Tijdens duo-bokscoaching ga je samen met een vriend(in), partner of familielid aan de slag.</p></div>
                             <div class="sv-blok"><h4>Wat houdt het traject in?</h4><p>Afhankelijk van jullie doelen wisselen we gezamenlijke oefeningen af met individuele begeleiding. Soms is het waardevol om juist samen te oefenen en onderlinge patronen zichtbaar te maken. Op andere momenten is het belangrijk om individueel aan de slag te gaan.</p><p>Tijdens de intake bespreken we jullie wensen en doelen en kijken we welke aanpak het beste bij jullie past.</p></div>
@@ -853,7 +862,7 @@ html{background-color:#0a0a0a}
                             </div>
                         </div>
                     </div>
-                </div>
+                </dialog>
             </article>
         </div>
     </section>
@@ -1101,24 +1110,27 @@ html{background-color:#0a0a0a}
         }
 
 
-        // Bokscoaching in verbinding: trajecten uitklappen
-        const svCards = document.querySelectorAll('#samen .sv-card');
-        const svZet = (card, open) => {
-            const btn = card.querySelector('.sv-toggle');
-            card.classList.toggle('open', open);
-            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-            btn.querySelector('.sv-txt').textContent = open ? 'Sluit het traject' : 'Bekijk het traject';
+        // Bokscoaching in verbinding: traject in een pop-up
+        const svOpen = (card) => {
+            const dlg = card.querySelector('.sv-modal');
+            if (!dlg || dlg.open) return;
+            document.documentElement.classList.add('sv-lock');
+            if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+            dlg.querySelector('.sv-inner').scrollTop = 0;
         };
-        svCards.forEach(card => {
-            card.querySelector('.sv-toggle').addEventListener('click', () => {
-                const open = !card.classList.contains('open');
-                svZet(card, open);
-                if (open) setTimeout(() => card.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' }), 60);
+        document.querySelectorAll('#samen .sv-card').forEach(card => {
+            const dlg = card.querySelector('.sv-modal');
+            card.querySelector('.sv-toggle').addEventListener('click', () => svOpen(card));
+            dlg.querySelector('.sv-close').addEventListener('click', () => dlg.close ? dlg.close() : dlg.removeAttribute('open'));
+            dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+            dlg.addEventListener('close', () => {
+                document.documentElement.classList.remove('sv-lock');
+                if (location.hash === '#' + card.id) history.replaceState(null, '', location.pathname + location.search);
             });
         });
         const svHash = () => {
             const doel = document.getElementById(location.hash.slice(1));
-            if (doel && doel.classList.contains('sv-card')) { svZet(doel, true); doel.scrollIntoView({ block: 'start' }); }
+            if (doel && doel.classList.contains('sv-card')) { doel.scrollIntoView({ block: 'start' }); svOpen(doel); }
         };
         window.addEventListener('hashchange', svHash);
         svHash();
