@@ -592,7 +592,7 @@ html{background-color:#0a0a0a}
 #samen .sv-focus li{font-size:.8rem;padding:.45rem .8rem;border:1px solid rgba(255,255,255,.14);color:var(--lz-text-primary)}
 #samen .sv-toggle{cursor:pointer;font-family:inherit}
 #samen .sv-toggle .sv-plus{display:inline-block;transition:transform .3s var(--lz-ease-out-expo);font-size:1.1rem;line-height:1}
-#samen .sv-body{padding:2.2rem 2.6rem 2.6rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem 3rem}
+#samen .sv-body{padding:1.4rem 2.2rem 1.6rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.3rem 2.4rem}
 #samen .sv-blok h4{font-family:"Barlow Condensed",sans-serif;font-style:italic;font-weight:800;font-size:1.35rem;letter-spacing:-.01em;margin-bottom:.8rem;color:var(--lz-text-primary)}
 #samen .sv-blok p{color:var(--lz-text-secondary);line-height:1.75;margin-bottom:.9rem}
 #samen .sv-blok p:last-child{margin-bottom:0}
@@ -616,16 +616,29 @@ html{background-color:#0a0a0a}
 #samen .sv-modal::backdrop{background:rgba(5,5,5,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 #samen .sv-modal[open]{animation:svIn .35s var(--lz-ease-out-expo)}
 @keyframes svIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-#samen .sv-inner{max-height:calc(100dvh - 2rem);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
-#samen .sv-mhead{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;padding:2rem 2.6rem 1.6rem;background:#111;border-bottom:1px solid var(--lz-border)}
-#samen .sv-mhead .sv-label{margin-bottom:.6rem}
+#samen .sv-inner{max-height:calc(100dvh - 2rem);overflow-y:auto;scrollbar-width:none;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+#samen .sv-mhead{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;padding:1.4rem 2.2rem 1.2rem;background:#111;border-bottom:1px solid var(--lz-border)}
+#samen .sv-mhead .sv-label{margin-bottom:.4rem}
 #samen .sv-mhead h3{margin:0}
 #samen .sv-close{flex:none;width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.04);color:var(--lz-text-primary);font-size:1.6rem;line-height:1;cursor:pointer;font-family:inherit;transition:border-color .2s,background .2s}
 #samen .sv-close:hover{border-color:var(--lz-accent);background:rgba(209,124,115,.15)}
+#samen .sv-inner::-webkit-scrollbar{display:none}
+#samen .sv-mhead h3{font-size:clamp(1.5rem,2.4vw,2rem)}
+#samen .sv-mtag{color:var(--lz-accent);font-size:.95rem;margin-top:.35rem}
+#samen .sv-modal .sv-blok h4,#samen .sv-modal .sv-kies h4{font-size:1.15rem;margin-bottom:.45rem}
+#samen .sv-modal .sv-blok p{font-size:.93rem;line-height:1.6}
+#samen .sv-modal .sv-kies h4{margin-bottom:.7rem}
+#samen .sv-modal .sv-optie{padding:1rem 1.2rem}
+#samen .sv-modal .sv-optie b{font-size:2rem}
+#samen .sv-modal .sv-optie em{margin:.45rem 0 .3rem;font-size:.9rem}
+#samen .sv-modal .sv-optie p{font-size:.88rem;line-height:1.55}
+#samen .sv-modal .sv-cta{padding-top:0}
 html.sv-lock,html.sv-lock body{overflow:hidden}
+@media (max-height:680px) and (min-width:769px){#samen .sv-mhead{padding:1rem 2rem .9rem}#samen .sv-mhead h3{font-size:1.5rem}#samen .sv-body{padding:1rem 2rem 1.1rem;gap:1rem 2rem}#samen .sv-modal .sv-optie{padding:.75rem 1rem}#samen .sv-modal .sv-optie b{font-size:1.7rem}#samen .sv-modal .sv-blok p,#samen .sv-modal .sv-optie p{font-size:.85rem;line-height:1.5}#samen .sv-modal .sv-cta .btn{padding:.7rem 1.4rem}}
 @media (max-width:768px){#samen .sv-modal{width:100vw;height:100dvh;max-height:100dvh;border:0}#samen .sv-inner{max-height:100dvh;height:100%}#samen .sv-mhead{padding:max(1.2rem,env(safe-area-inset-top)) 1.4rem 1.2rem}#samen .sv-body{padding-bottom:max(1.8rem,env(safe-area-inset-bottom))}}
 @media (prefers-reduced-motion: reduce){#samen .sv-modal[open]{animation:none}}
-@media (max-width:1024px){#samen .sv-head{grid-template-columns:1fr}#samen .sv-body{grid-template-columns:1fr 1fr}#samen .sv-opties{grid-template-columns:1fr}#samen .sv-optie{border-left:0;border-top:1px solid rgba(255,255,255,.14)}#samen .sv-optie:first-child{border-top:0}}
+@media (max-width:1024px){#samen .sv-head{grid-template-columns:1fr}}
+@media (max-width:768px){#samen .sv-opties{grid-template-columns:1fr}#samen .sv-optie{border-left:0;border-top:1px solid rgba(255,255,255,.14)}#samen .sv-optie:first-child{border-top:0}}
 @media (max-width:768px){#samen .sv-grid{grid-template-columns:minmax(0,1fr);gap:1rem}#samen .sv-top{padding:1.8rem 1.4rem 1.6rem}#samen .sv-body{grid-template-columns:1fr;padding:1.8rem 1.4rem 1.8rem;gap:1.6rem}#samen .sv-head{margin-bottom:2rem}}
 @media (max-width:480px){#samen .sv-cta .btn{width:100%;justify-content:center;white-space:normal;text-align:center}}
 
@@ -811,18 +824,17 @@ html.sv-lock,html.sv-lock body{overflow:hidden}
                 </div>
                 <dialog class="sv-modal" id="ouder-kind-info" aria-labelledby="ouder-kind-titel">
                     <div class="sv-inner">
-                        <div class="sv-mhead"><div><div class="sv-label">01 · Ouder &amp; kind</div><h3 id="ouder-kind-titel">Ouder-kind sporttraject</h3></div><button type="button" class="sv-close" aria-label="Sluiten">&times;</button></div>
+                        <div class="sv-mhead"><div><div class="sv-label">01 · Ouder &amp; kind</div><h3 id="ouder-kind-titel">Ouder-kind sporttraject</h3><p class="sv-mtag">Samen sporten is het begin. Samen groeien is het doel.</p></div><button type="button" class="sv-close" aria-label="Sluiten">&times;</button></div>
                         <div class="sv-body">
-                            <div class="sv-blok"><h4>Herken je dit?</h4><p>Je kind wil graag sporten, maar een reguliere sportclub is misschien te druk of geeft te veel prikkels. Ondertussen heb je als ouder je eigen werk, verplichtingen en een volle agenda. Tijd om zelf te sporten schiet er regelmatig bij in.</p><p>En samen sporten? Je kind meenemen naar de sportschool is niet altijd een optie. Daarom bied ik ouder-kind sporttrajecten aan.</p></div>
-                            <div class="sv-blok"><h4>Wat houdt het traject in?</h4><p>Tijdens deze trajecten gaan jullie samen bewegen, boksen en plezier maken. Een moment waarop jullie allebei actief bezig zijn en echt tijd hebben voor elkaar.</p><p>Maar het gaat om meer dan samen sporten. Sport en boksen vormen het middel om op een andere manier met elkaar in contact te komen. Tijdens de oefeningen werken jullie aan vertrouwen, samenwerking en communicatie. We staan stil bij jullie onderlinge dynamiek, gedrag en onbewuste patronen. Wat gebeurt er tussen jullie? Hoe reageren jullie op elkaar? Wat hebben jullie allebei nodig?</p></div>
-                            <div class="sv-blok"><h4>Wat levert het op?</h4><p>Je krijgt inzicht in jezelf en elkaar en leert op een praktische manier nieuwe vaardigheden toepassen in jullie dagelijks contact.</p><p>Zo combineren we plezier en beweging met het versterken van jullie ouder-kindrelatie.</p></div>
-                            <p class="sv-quote">Samen sporten is het begin. Samen groeien is het doel.</p>
+                            <div class="sv-blok"><h4>Herken je dit?</h4><p>Je kind wil sporten, maar een sportclub is te druk of geeft te veel prikkels. En zelf kom je door werk en een volle agenda nauwelijks aan sporten toe.</p></div>
+                            <div class="sv-blok"><h4>Wat houdt het traject in?</h4><p>Samen bewegen, boksen en plezier maken. Sport is het middel: we werken aan vertrouwen, samenwerking en communicatie en kijken naar jullie onderlinge patronen.</p></div>
+                            <div class="sv-blok"><h4>Wat levert het op?</h4><p>Inzicht in jezelf en elkaar, nieuwe vaardigheden voor jullie dagelijks contact en een sterkere ouder-kindrelatie.</p></div>
                             <div class="sv-kies">
-                                <h4 class="sv-blok-h">Kies het traject dat bij jullie past</h4>
+                                <h4>Kies het traject dat bij jullie past</h4>
                                 <div class="sv-opties">
-                                <div class="sv-optie"><b>5<small>sessies</small></b><em>Samen ontdekken &amp; kennismaken</em><p>Samen bewegen, boksen en plezier maken. We leren elkaar kennen en onderzoeken wat jullie fijn vinden om samen te doen. Er is aandacht voor de eerste zichtbare patronen in jullie contact, communicatie en samenwerking.</p></div>
-                                <div class="sv-optie"><b>10<small>sessies</small></b><em>Inzicht &amp; verdieping</em><p>We gaan dieper in op jullie onderlinge dynamiek en werken aan verandering in het hier en nu. Hoe reageren jullie op elkaar? Welke patronen komen steeds terug? Hoe reageer je als ouder op het gedrag van je kind en wat heeft je kind op dat moment nodig? We oefenen met andere manieren van communiceren en reageren.</p></div>
-                                <div class="sv-optie"><b>20<small>sessies</small></b><em>Patronen doorbreken &amp; duurzame verandering</em><p>We onderzoeken ook de achtergrond van bepaalde patronen. Waar komen bepaalde reacties en gewoontes vandaan? Hoe ben jij zelf opgevoed? Wat heb je daarvan meegenomen in je ouderschap en wat wil je juist aan je kind meegeven? Welke patronen wil je doorbreken? We werken aan bewustwording, nieuwe vaardigheden en een andere manier van omgaan met elkaar.</p></div>
+                                    <div class="sv-optie"><b>5<small>sessies</small></b><em>Samen ontdekken &amp; kennismaken</em><p>Plezier maken, elkaar leren kennen en de eerste patronen in jullie contact zien.</p></div>
+                                    <div class="sv-optie"><b>10<small>sessies</small></b><em>Inzicht &amp; verdieping</em><p>Dieper in jullie dynamiek: hoe reageren jullie op elkaar en wat heeft je kind nodig?</p></div>
+                                    <div class="sv-optie"><b>20<small>sessies</small></b><em>Patronen doorbreken</em><p>Waar komen patronen vandaan, ook uit je eigen opvoeding? Samen werken aan blijvende verandering.</p></div>
                                 </div>
                             </div>
                             <div class="sv-cta">
@@ -843,17 +855,17 @@ html.sv-lock,html.sv-lock body{overflow:hidden}
                 </div>
                 <dialog class="sv-modal" id="duo-info" aria-labelledby="duo-titel">
                     <div class="sv-inner">
-                        <div class="sv-mhead"><div><div class="sv-label">02 · Duo volwassenen</div><h3 id="duo-titel">Duo-bokscoaching voor volwassenen</h3></div><button type="button" class="sv-close" aria-label="Sluiten">&times;</button></div>
+                        <div class="sv-mhead"><div><div class="sv-label">02 · Duo volwassenen</div><h3 id="duo-titel">Duo-bokscoaching voor volwassenen</h3><p class="sv-mtag">Samen trainen, persoonlijk groeien.</p></div><button type="button" class="sv-close" aria-label="Sluiten">&times;</button></div>
                         <div class="sv-body">
-                            <div class="sv-blok"><h4>Samen trainen, persoonlijk groeien</h4><p>Wil je werken aan jezelf, maar vind je het fijn om dit samen met iemand te doen? Tijdens duo-bokscoaching ga je samen met een vriend(in), partner of familielid aan de slag.</p></div>
-                            <div class="sv-blok"><h4>Wat houdt het traject in?</h4><p>Afhankelijk van jullie doelen wisselen we gezamenlijke oefeningen af met individuele begeleiding. Soms is het waardevol om juist samen te oefenen en onderlinge patronen zichtbaar te maken. Op andere momenten is het belangrijk om individueel aan de slag te gaan.</p><p>Tijdens de intake bespreken we jullie wensen en doelen en kijken we welke aanpak het beste bij jullie past.</p></div>
-                            <div class="sv-blok"><h4>Wat levert het op?</h4><p>Jullie werken allebei aan persoonlijke doelen en leren tegelijkertijd van elkaar.</p><p>Door samen te boksen en te bewegen, ontstaat ruimte om te werken aan zelfvertrouwen, grenzen aangeven, communicatie en persoonlijke ontwikkeling.</p></div>
+                            <div class="sv-blok"><h4>Herken je dit?</h4><p>Je wilt aan jezelf werken, maar doet dat liever samen met een vriend(in), partner of familielid.</p></div>
+                            <div class="sv-blok"><h4>Wat houdt het traject in?</h4><p>Samen boksen en bewegen, afgewisseld met individuele begeleiding. In de intake bepalen we welke aanpak bij jullie past.</p></div>
+                            <div class="sv-blok"><h4>Wat levert het op?</h4><p>Meer zelfvertrouwen, leren grenzen aangeven, betere communicatie en inzicht in jullie onderlinge patronen.</p></div>
                             <div class="sv-kies">
-                                <h4 class="sv-blok-h">Kies het traject dat bij jullie past</h4>
+                                <h4>Kies het traject dat bij jullie past</h4>
                                 <div class="sv-opties">
-                                <div class="sv-optie"><b>5<small>sessies</small></b><em>Kennismaking &amp; inzicht</em><p>Samen ontdekken wat boksen en bewegen voor jullie kunnen betekenen. We werken aan individuele doelen en kijken hoe jullie op elkaar reageren. Er ontstaat inzicht in onderlinge patronen, communicatie en samenwerking.</p></div>
-                                <div class="sv-optie"><b>10<small>sessies</small></b><em>Verdieping &amp; persoonlijke ontwikkeling</em><p>We gaan dieper in op jullie individuele doelen en de dynamiek tussen jullie. Tijdens de trainingen wisselen we gezamenlijke oefeningen af met individuele begeleiding. Zo ontstaat ruimte voor persoonlijke ontwikkeling én het onderzoeken van jullie onderlinge interactie.</p></div>
-                                <div class="sv-optie"><b>20<small>sessies</small></b><em>Verandering &amp; duurzame ontwikkeling</em><p>We werken aan hardnekkigere patronen en gedragsverandering. Wat nemen jullie van elkaar over? Welke rollen of verwachtingen spelen mee? Door individuele begeleiding, gezamenlijke oefeningen en reflectie ontstaat ruimte om nieuwe manieren van communiceren en samenwerken te ontwikkelen.</p></div>
+                                    <div class="sv-optie"><b>5<small>sessies</small></b><em>Kennismaking &amp; inzicht</em><p>Ontdekken wat boksen voor jullie betekent en zien hoe jullie op elkaar reageren.</p></div>
+                                    <div class="sv-optie"><b>10<small>sessies</small></b><em>Verdieping &amp; ontwikkeling</em><p>Dieper in op jullie eigen doelen en de dynamiek tussen jullie, samen en individueel.</p></div>
+                                    <div class="sv-optie"><b>20<small>sessies</small></b><em>Duurzame verandering</em><p>Hardnekkige patronen, rollen en verwachtingen doorbreken en nieuwe manieren van samenwerken leren.</p></div>
                                 </div>
                             </div>
                             <div class="sv-cta">
